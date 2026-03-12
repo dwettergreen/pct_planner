@@ -252,7 +252,7 @@ const RESUPPLY = [
 
 const RESUPPLY_STOPS = RESUPPLY.map(r => ({
   mile:r.mile, name:r.name, lat:r.lat, lon:r.lon,
-  elev:null, type:"Resupply", water:true, outhouse:false,
+  elev:null, type:"Resupply", water:true, outhouse:true,
   isResupply:true, amenities:r.amenities, desc:r.desc
 }));
 const ALL_STOPS = [...CAMPS, ...RESUPPLY_STOPS].sort((a,b)=>a.mile-b.mile);
