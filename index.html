@@ -58,12 +58,7 @@ header{
 input[type=range]{flex:1;accent-color:var(--green);cursor:pointer;}
 input[type=date]{flex:1;background:#ffffff;border:1px solid #8090b0;color:#1a2235;border-radius:4px;padding:3px 6px;font-size:11px;font-family:inherit;}
 .cval{font-family:'Source Code Pro',monospace;font-size:11px;color:var(--green);width:38px;text-align:right;flex-shrink:0;}
-.brow{display:flex;gap:5px;margin-top:6px;}
 .btn{flex:1;padding:5px 6px;border-radius:4px;border:1px solid var(--border);font-size:11px;font-weight:600;cursor:pointer;transition:all .15s;text-transform:uppercase;letter-spacing:.4px;font-family:inherit;}
-.btn-p{background:var(--green-bg);border-color:var(--green);color:var(--green);}
-.btn-p:hover{background:var(--green);color:#000;}
-.btn-d{background:var(--red-bg);border-color:var(--red);color:var(--red);}
-.btn-d:hover{background:var(--red);color:#fff;}
 
 #list-panel{overflow-y:auto;flex:1;}
 #list-panel::-webkit-scrollbar{width:4px;}
@@ -87,13 +82,6 @@ input[type=date]{flex:1;background:#ffffff;border:1px solid #8090b0;color:#1a223
 .nelev{font-family:'Source Code Pro',monospace;font-size:11px;font-weight:600;}
 .nmi{font-size:10px;color:var(--text3);}
 .badge{font-size:9px;padding:1px 4px;border-radius:3px;font-weight:600;text-transform:uppercase;}
-.xbtn{padding:6px 12px;border-radius:4px;border:1px solid;font-size:11px;font-weight:600;cursor:pointer;font-family:inherit;transition:all .15s;}
-.xbtn-g{background:#d8f0e4;color:#1a6038;border-color:#70b890;}
-.xbtn-g:hover{background:#70b890;color:#fff;}
-.xbtn-b{background:#deeaf8;color:#1a5090;border-color:#8ab4dc;}
-.xbtn-b:hover{background:#8ab4dc;color:#fff;}
-.xbtn-r{background:#fde8e8;color:#a01818;border-color:#e09090;}
-.xbtn-r:hover{background:#e09090;color:#fff;}
 
 /* Summary */
 .ss{margin-bottom:12px;}
@@ -110,15 +98,7 @@ input[type=date]{flex:1;background:#ffffff;border:1px solid #8090b0;color:#1a223
 /* ── MAP ── */
 #map-wrap{position:relative;overflow:hidden;}
 #map{height:100%;}
-.mpill{position:absolute;z-index:900;background:#f0f2f8;border:1px solid #cdd4e0;border-radius:5px;backdrop-filter:blur(4px);font-size:11px;color:#2d4060;padding:6px 10px;}
-#drag-status{top:10px;left:50%;transform:translateX(-50%);display:none;background:rgba(255,215,0,.1);border-color:var(--snap);color:var(--snap);font-weight:600;white-space:nowrap;}
-#layer-sw{top:10px;right:10px;}
-#layer-sw label{display:flex;align-items:center;gap:5px;cursor:pointer;margin-bottom:3px;color:#1a2235;font-size:11px;}
-#layer-sw label:last-child{margin-bottom:0;}
 #map-legend{bottom:8px;left:10px;}
-.lr{display:flex;align-items:center;gap:5px;margin-bottom:3px;font-size:11px;color:#2d4060;}
-.ld{width:10px;height:10px;border-radius:50%;border:1.5px solid rgba(255,255,255,.2);flex-shrink:0;}
-.ltitle{font-family:'Bitter',serif;font-weight:700;color:#1a2235;font-size:12px;margin-bottom:5px;}
 #warnbar{position:absolute;bottom:0;left:0;right:0;z-index:800;background:#b82020;border-top:1px solid #800;padding:5px 14px;font-size:11px;color:#fff;display:none;}
 
 /* Popups */
@@ -135,7 +115,6 @@ input[type=date]{flex:1;background:#ffffff;border:1px solid #8090b0;color:#1a223
 .tip-tooltip{background:var(--bg)!important;border:1px solid var(--green)!important;color:var(--green)!important;font-family:'Source Code Pro',monospace!important;font-size:11px!important;}
 
 /* Snap pulse */
-@keyframes snap-out{0%{transform:scale(1);opacity:1;}100%{transform:scale(2.8);opacity:0;}}
 .snap-pulse{position:absolute;border-radius:50%;border:2px solid var(--snap);animation:snap-out .55s ease-out forwards;pointer-events:none;z-index:2000;}
 
 /* ── ELEVATION CHART ── */
@@ -360,8 +339,6 @@ const MOSQ_BASE = [
   [5500,  192, 17],   // subalpine 4.5-5.5k ft
   [99999, 207, 14],   // alpine   5.5k+ ft
 ];
-const BASELINE_MELT_DOY = 152;  // Jun 1
-
 function getMeltDoy(){
   const el = document.getElementById('melt-date');
   if(!el) return BASELINE_MELT_DOY;
@@ -443,12 +420,6 @@ function showSnap(latlng){
 // → skip (continue) if dist < min  (too close, go further back)
 // → break if dist > max  (too far, all further j also too far)
 // ════════════════════════════════════════════════════
-function buildZoneElev(){
-  return CAMPS.map((c,i)=>{
-    const near = CAMPS.filter(x=>Math.abs(x.mile-c.mile)<=15).map(x=>x.elev).filter(Boolean);
-    return near.length ? near.reduce((a,b)=>a+b)/near.length : 4000;
-  });
-}
 
 function buildPlan(){
   const {avg} = getPace();
@@ -1063,15 +1034,6 @@ function rebuildAndRender(){
   map.fitBounds(L.latLngBounds(plan.map(c=>[c.lat,c.lon])),{padding:[28,28]});
 }
 
-function resetAll(){
-  document.getElementById('avg-pace').value=13;
-  document.getElementById('flex-pace').value=3;
-  document.getElementById('start-date').value='2026-07-01';
-  document.getElementById('melt-date').value='2026-06-01';
-  syncLabels();
-  rebuildAndRender();
-}
-
 // ════════════════════════════════════════════════════
 
 
@@ -1139,36 +1101,36 @@ async function init() {
     // // INIT — render fresh first, then restore from URL params if present
 syncLabels();
 rebuildAndRender();
-(function(){{
-  try {{
+(function(){
+  try {
     const params = new URLSearchParams(window.location.search);
     if(!params.has('avg')) return;   // no saved state in URL
     let changed = false;
-    const setVal = (id, key) => {{
+    const setVal = (id, key) => {
       const v = params.get(key);
-      if(v && v !== document.getElementById(id).value){{
+      if(v && v !== document.getElementById(id).value){
         document.getElementById(id).value = v; changed = true;
-      }}
-    }};
+      }
+    };
     setVal('start-date','sd');
     setVal('melt-date','md');
     setVal('avg-pace','avg');
     setVal('flex-pace','flex');
-    if(changed){{ syncLabels(); rebuildAndRender(); }}
+    if(changed){ syncLabels(); rebuildAndRender(); }
     // Re-apply dragged overrides encoded as "ov=nightIdx:mile,nightIdx:mile,..."
     const ovParam = params.get('ov');
-    if(ovParam && plan.length){{
+    if(ovParam && plan.length){
       let anyOverride = false;
-      ovParam.split(',').forEach(tok => {{
+      ovParam.split(',').forEach(tok => {
         const [ni, mi] = tok.split(':').map(Number);
         if(isNaN(ni) || isNaN(mi) || ni >= plan.length) return;
         const match = ALL_STOPS.find(c => Math.abs(c.mile - mi) < 0.01);
-        if(match){{ plan[ni] = {{...match, isTerminus:false}}; anyOverride=true; }}
-      }});
+        if(match){ plan[ni] = {...match, isTerminus:false}; anyOverride=true; }
+      });
       if(anyOverride) renderAll();
-    }}
-  }} catch(e) {{ /* bad URL params — ignore */ }}
-}})();
+    }
+  } catch(e) { /* bad URL params — ignore */ }
+})();
     syncLabels();
     rebuildAndRender();
 
