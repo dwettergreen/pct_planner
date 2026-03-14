@@ -10,6 +10,7 @@
   <script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.min.js"></script>
   <style>
 
+
 :root {
   --bg:#f5f6f8; --bg2:#ffffff; --bg3:#edf0f5;
   --border:#253045; --border2:#1e2d44;
@@ -147,9 +148,44 @@ input[type=date]{flex:1;background:#ffffff;border:1px solid #8090b0;color:#1a223
   .spin{width:36px;height:36px;border:3px solid #cdd4e0;border-top-color:#2a7d4f;
     border-radius:50%;animation:spin .8s linear infinite;margin-bottom:16px;}
   @keyframes spin{to{transform:rotate(360deg)}}
-  </style>
-</head>
-<body>
+
+/* ── EDITOR TAB ── */
+#edit-panel{overflow-y:auto;flex:1;padding:0;display:none;background:#fff;}
+.edit-toolbar{padding:8px 10px;border-bottom:1px solid var(--border);display:flex;gap:5px;flex-wrap:wrap;flex-shrink:0;}
+.edit-toolbar .ebtn{padding:4px 8px;font-size:10px;}
+.eform{padding:10px;}
+.eform-hdr{font-size:10px;font-weight:700;text-transform:uppercase;letter-spacing:.5px;
+  color:var(--text3);margin-bottom:8px;padding-bottom:5px;border-bottom:1px solid var(--border);
+  display:flex;justify-content:space-between;align-items:center;}
+.erow{display:grid;grid-template-columns:90px 1fr;align-items:center;gap:5px;margin-bottom:7px;}
+.elbl{font-size:11px;color:var(--text3);}
+.einp{padding:4px 7px;border:1px solid var(--border);border-radius:4px;
+  font-size:11px;font-family:inherit;background:var(--bg);color:var(--text);width:100%;}
+.einp:focus{outline:none;border-color:var(--blue);}
+.einp[readonly]{background:var(--bg3);color:var(--text3);}
+.echk{display:flex;align-items:center;gap:5px;font-size:11px;cursor:pointer;}
+.eform-btns{display:flex;gap:5px;margin-top:10px;flex-wrap:wrap;}
+.elist{overflow-y:auto;}
+.ecamp-row{padding:6px 10px;border-bottom:1px solid var(--border);cursor:pointer;
+  display:flex;align-items:center;gap:7px;transition:background .1s;font-size:11px;}
+.ecamp-row:hover{background:var(--bg3);}
+.ecamp-row.esel{background:var(--blue-bg);border-left:3px solid var(--blue);}
+.ecamp-row.enew{border-left:3px solid var(--green);}
+.ecamp-mile{font-family:'Source Code Pro',monospace;font-size:10px;color:var(--text3);width:44px;flex-shrink:0;}
+.ecamp-name{flex:1;min-width:0;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;font-weight:600;}
+.ecamp-src{font-size:9px;padding:1px 4px;border-radius:3px;font-weight:600;flex-shrink:0;}
+.src-halfmile{background:#eaecf4;color:#4a5a78;}
+.src-resupply{background:var(--blue-bg);color:var(--blue);}
+.src-custom{background:var(--green-bg);color:var(--green);}
+.edit-search{padding:6px 10px;border-bottom:1px solid var(--border);flex-shrink:0;}
+.edit-search input{width:100%;padding:4px 7px;border:1px solid var(--border);border-radius:4px;
+  font-size:11px;font-family:inherit;background:var(--bg3);color:var(--text);}
+.edit-search input:focus{outline:none;border-color:var(--blue);}
+.edit-count{font-size:10px;color:var(--text3);margin-top:3px;}
+#edit-hint{display:none;}
+
+</style>
+
 
 <div id="loading">
   <div class="spin"></div>
@@ -178,6 +214,7 @@ input[type=date]{flex:1;background:#ffffff;border:1px solid #8090b0;color:#1a223
       <div class="stab on" id="tab-itin" onclick="showTab('itin')">Itinerary</div>
       <div class="stab" id="tab-sum" onclick="showTab('sum')">Summary</div>
       <div class="stab" id="tab-exp" onclick="showTab('exp')">Export</div>
+      <div class="stab" id="tab-edit" onclick="showTab('edit')">Editor</div>
     </div>
     <div class="controls">
       <div class="crow">
@@ -207,11 +244,13 @@ input[type=date]{flex:1;background:#ffffff;border:1px solid #8090b0;color:#1a223
     <div id="list-panel"></div>
     <div id="sum-panel"></div>
     <div id="exp-panel"></div>
+    <div id="edit-panel"></div>
   </div>
 
   <div id="map-wrap">
     <div id="map"></div>
     <div class="mpill" id="drag-status">⬡ Dragging — drop to snap</div>
+    <div class="mpill" id="edit-hint">📍 Click trail to add campsite here</div>
     <div class="mpill" id="layer-sw">
       <div style="font-family:'Bitter',serif;font-weight:700;color:var(--text);font-size:11px;margin-bottom:5px">Basemap</div>
       <label><input type="radio" name="lyr" value="topo" checked onchange="switchLayer('topo')"> OpenTopoMap (PCT visible)</label>
@@ -245,11 +284,14 @@ input[type=date]{flex:1;background:#ffffff;border:1px solid #8090b0;color:#1a223
 </div><!-- #app -->
 
 <script>
+
 // ════════════════════════════════════════════════════
 // CONSTANTS
 // ════════════════════════════════════════════════════
-const START_MILE = 2147.3;
-const END_MILE   = 2653.1;
+const START_MILE       = 2147.3;
+const END_MILE         = 2653.1;
+const START_TRAIL_DIST = 0.0;    // trailDist of Bridge of Gods (before first camp)
+const END_TRAIL_DIST   = 505.38; // trailDist of Northern Terminus
 const BASELINE_MELT_DOY = 152;
 
 // ════════════════════════════════════════════════════
@@ -268,6 +310,13 @@ const TERMINUS = { name:'Northern Terminus', lat:49.000000, lon:-120.802223, ele
 let plan = [];          // array of camp objects (last = terminus)
 let activeIdx = null;   // highlighted night index
 const markers = {};     // idx → L.marker
+
+// ── EDITOR STATE ──────────────────────────────────────────────
+let editorMode    = false;  // true when Editor tab is active
+let editorSel     = null;   // index into ALL_STOPS[] of selected camp
+let editorDirty   = false;  // unsaved changes in this session
+let editorDotLayer = null;  // L.LayerGroup for editor dots
+let editorTempMark = null;  // temp marker while editing
 
 // ════════════════════════════════════════════════════
 // MAP
@@ -387,9 +436,12 @@ function mosquitoLabel(p){
 function arrivalDate(nightIdx){
   const sd  = getStartDate();
   const avg = getPace().avg;
-  const mile = (plan[nightIdx] || {mile: END_MILE}).mile;
+  const camp = plan[nightIdx];
+  const SCALE = (END_TRAIL_DIST-START_TRAIL_DIST)/(END_MILE-START_MILE);
+  const td = camp ? (camp.trailDist != null ? camp.trailDist : (camp.mile-START_MILE)*SCALE)
+                  : END_TRAIL_DIST;
   const d = new Date(sd);
-  d.setDate(d.getDate() + Math.round((mile - START_MILE) / avg));
+  d.setDate(d.getDate() + Math.round(td / avg));
   return d;
 }
 function getPace(){
@@ -417,6 +469,16 @@ function snapNearest(latlng){
   ALL_STOPS.forEach(c=>{ const d=(c.lat-latlng.lat)**2+(c.lon-latlng.lng)**2; if(d<bd){bd=d;best=c;} });
   return best;
 }
+
+// Snap a latlng to the nearest point in TRAIL_COORDS
+function snapToTrail(latlng){
+  let bestI=0, bd=Infinity;
+  TRAIL_COORDS.forEach(([lon,lat],i)=>{
+    const d=(lat-latlng.lat)**2+(lon-latlng.lng)**2;
+    if(d<bd){ bd=d; bestI=i; }
+  });
+  return { lat: TRAIL_COORDS[bestI][1], lon: TRAIL_COORDS[bestI][0] };
+}
 function showSnap(latlng){
   const p = map.latLngToContainerPoint(latlng);
   const el = document.createElement('div');
@@ -439,19 +501,27 @@ function buildPlan(){
   const sd       = getStartDate();
   const startDoy = Math.floor((sd - new Date(sd.getFullYear(), 0, 0)) / 86400000);
 
-  const TOTAL = END_MILE - START_MILE;           // 505.8 mi
-  const T     = Math.round(TOTAL / avg);         // target number of nights
+  const TOTAL = END_TRAIL_DIST - START_TRAIL_DIST;  // geometry-derived total miles
+  const T     = Math.round(TOTAL / avg);             // target number of nights
+
+  // Use trailDist (geometry-derived) for the DP distance window.
+  // Falls back to (mile - START_MILE) scaled to geometry if trailDist missing.
+  const SCALE = TOTAL / (END_MILE - START_MILE);
+  function getTD(camp){
+    if(camp.trailDist != null) return camp.trailDist;
+    return (camp.mile - START_MILE) * SCALE;
+  }
 
   const N     = ALL_STOPS.length;
-  const miles = [START_MILE, ...ALL_STOPS.map(c => c.mile), END_MILE];
-  const M     = miles.length;
+  const dists = [START_TRAIL_DIST, ...ALL_STOPS.map(getTD), END_TRAIL_DIST];
+  const M     = dists.length;
 
   // Score = elev × (1 + 2 × low-mosquito-bonus), date-aware
   function score(i) {
     if(i === 0 || i === M-1) return 0;
     const camp = ALL_STOPS[i-1];
     const elev = camp.elev || 3500;
-    const arrDoy = startDoy + (miles[i] - START_MILE) / avg;
+    const arrDoy = startDoy + dists[i] / avg;
     let mp = 0;
     const meltShift = getMeltDoy() - BASELINE_MELT_DOY;
     for(const [maxE, peak, sigma] of MOSQ_BASE){
@@ -460,7 +530,7 @@ function buildPlan(){
     return elev * (1 + 2.0 * (1 - mp));
   }
 
-  // Run DP with a given [min_d, max_d] window
+  // Run DP with a given [min_d, max_d] window (in trail-geometry miles)
   function runDP(min_d, max_d) {
     const NEG = -Infinity;
     const dp   = new Float64Array(M).fill(NEG);
@@ -468,7 +538,7 @@ function buildPlan(){
     dp[0] = 0;
     for(let i = 1; i < M; i++){
       for(let j = i-1; j >= 0; j--){
-        const dist = miles[i] - miles[j];
+        const dist = dists[i] - dists[j];
         if(dist < min_d) continue;
         if(dist > max_d) break;
         if(dp[j] === NEG) continue;
@@ -477,7 +547,6 @@ function buildPlan(){
       }
     }
     if(dp[M-1] === NEG) return null;
-    // Traceback
     const path = [];
     let idx = M-1;
     while(idx > 0){ path.push(idx); idx = prev[idx]; }
@@ -609,8 +678,12 @@ function renderList(){
 
   plan.forEach((camp,idx)=>{
     const isTerm=!!camp.isTerminus;
-    const prevMile=idx===0?START_MILE:plan[idx-1].mile;
-    const mi=camp.mile-prevMile;
+    // Use trailDist for daily distance if available, else fall back to mile diff
+    const SCALE = (END_TRAIL_DIST-START_TRAIL_DIST)/(END_MILE-START_MILE);
+    const prevTD = idx===0 ? START_TRAIL_DIST
+      : (plan[idx-1].trailDist != null ? plan[idx-1].trailDist : (plan[idx-1].mile-START_MILE)*SCALE);
+    const thisTD = camp.trailDist != null ? camp.trailDist : (camp.mile-START_MILE)*SCALE;
+    const mi = thisTD - prevTD;
     const isWarn=!isTerm&&(mi<min-0.3||mi>max+0.3);
     const col=elevColor(camp.elev);
 
@@ -815,9 +888,13 @@ function renderHeader(){
 function renderWarnings(){
   const {min,max}=getPace();
   const warns=[];
+  const SCALE_W = (END_TRAIL_DIST-START_TRAIL_DIST)/(END_MILE-START_MILE);
   plan.forEach((camp,idx)=>{
     if(camp.isTerminus) return;
-    const mi=camp.mile-(idx===0?START_MILE:plan[idx-1].mile);
+    const prevTD = idx===0 ? START_TRAIL_DIST
+      : (plan[idx-1].trailDist != null ? plan[idx-1].trailDist : (plan[idx-1].mile-START_MILE)*SCALE_W);
+    const thisTD = camp.trailDist != null ? camp.trailDist : (camp.mile-START_MILE)*SCALE_W;
+    const mi = thisTD - prevTD;
     if(mi<min-0.3||mi>max+0.3) warns.push(`Night ${idx+1}: ${mi.toFixed(1)} mi`);
   });
   const bar=document.getElementById('warnbar');
@@ -861,11 +938,17 @@ function showTab(t){
   document.getElementById('tab-itin').classList.toggle('on',t==='itin');
   document.getElementById('tab-sum').classList.toggle('on',t==='sum');
   document.getElementById('tab-exp').classList.toggle('on',t==='exp');
+  document.getElementById('tab-edit').classList.toggle('on',t==='edit');
   document.getElementById('list-panel').style.display=t==='itin'?'block':'none';
   document.getElementById('sum-panel').style.display=t==='sum'?'block':'none';
   document.getElementById('exp-panel').style.display=t==='exp'?'block':'none';
-  if(t==='sum') renderSummary();
-  if(t==='exp') renderExport();
+  document.getElementById('edit-panel').style.display=t==='edit'?'flex':'none';
+  // Hide planner controls in editor mode, show in others
+  document.querySelector('.controls').style.display = t==='edit' ? 'none' : '';
+  if(t==='sum')  renderSummary();
+  if(t==='exp')  renderExport();
+  if(t==='edit') { editorMode=true;  renderEditor(); enterEditorMode(); }
+  else           { editorMode=false; exitEditorMode();  }
 }
 
 // ════════════════════════════════════════════════════
@@ -886,8 +969,11 @@ function planToCSV(){
   plan.forEach((camp,idx)=>{
     const isTerm = !!camp.isTerminus;
     const date = fmtDate(sd, idx);
-    const prevMile = idx===0 ? START_MILE : plan[idx-1].mile;
-    const mi = (camp.mile - prevMile).toFixed(1);
+    const SCALE_C = (END_TRAIL_DIST-START_TRAIL_DIST)/(END_MILE-START_MILE);
+    const prevTD_C = idx===0 ? START_TRAIL_DIST
+      : (plan[idx-1].trailDist != null ? plan[idx-1].trailDist : (plan[idx-1].mile-START_MILE)*SCALE_C);
+    const thisTD_C = camp.trailDist != null ? camp.trailDist : (camp.mile-START_MILE)*SCALE_C;
+    const mi = (thisTD_C - prevTD_C).toFixed(1);
     const mp = isTerm ? '' : mosquitoLabel(mosquitoAt(camp.elev, arrivalDate(idx)));
     const mpVal = mp && mp !== 'MINIMAL' ? mp + ' mosquitoes' : '';
     const wind = !isTerm && camp.elev >= 6500 ? 'High Wind'
@@ -979,13 +1065,267 @@ function saveAsJSON(){
 }
 
 
+
+// ══════════════════════════════════════════════════════════════════
+// EDITOR
+// ══════════════════════════════════════════════════════════════════
+
+function enterEditorMode(){
+  document.getElementById('edit-hint').style.display = 'block';
+  map.getContainer().style.cursor = 'crosshair';
+  renderEditorList();
+  rebuildEditorDots();
+}
+
+function exitEditorMode(){
+  document.getElementById('edit-hint').style.display = 'none';
+  map.getContainer().style.cursor = '';
+  editorSel = null;
+  if(editorTempMark){ map.removeLayer(editorTempMark); editorTempMark=null; }
+}
+
+function rebuildEditorDots(){
+  editorDotLayer.clearLayers();
+  ALL_STOPS.forEach((c,i) => {
+    if(!c.lat || !c.lon) return;
+    const isNew = c.source==='custom';
+    const isRS  = c.source==='resupply';
+    const color = isRS ? '#1d4ed8' : isNew ? '#2a7d4f' : '#e07020';
+    const fill  = isRS ? '#93c5fd' : isNew ? '#86efac' : '#ffffff';
+    L.circleMarker([c.lat,c.lon],{
+      radius: isRS||isNew ? 5 : 4,
+      color, weight:2, fillColor:fill, fillOpacity:0.9, opacity:0.9
+    }).on('click', ev => {
+      L.DomEvent.stopPropagation(ev);
+      editorSelectByIndex(i);
+    }).addTo(editorDotLayer);
+  });
+}
+
+function editorSelectByIndex(i){
+  editorSel = i;
+  const c = ALL_STOPS[i];
+  editorShowForm(c, false);
+  renderEditorList();
+  if(c.lat && c.lon){
+    map.setView([c.lat,c.lon], Math.max(map.getZoom(),12));
+    if(editorTempMark) map.removeLayer(editorTempMark);
+    editorTempMark = L.marker([c.lat,c.lon]).addTo(map);
+  }
+}
+
+function editorStartNewAtTrailPoint(pt){
+  // Estimate mile from nearest camp
+  let nearMile = START_MILE;
+  let nearDist = Infinity;
+  ALL_STOPS.forEach(c => {
+    const d=(c.lat-pt.lat)**2+(c.lon-pt.lon)**2;
+    if(d<nearDist){ nearDist=d; nearMile=c.mile||START_MILE; }
+  });
+  const newCamp = {
+    name:'', mile: parseFloat(nearMile.toFixed(2)),
+    lat: parseFloat(pt.lat.toFixed(6)), lon: parseFloat(pt.lon.toFixed(6)),
+    elev:null, type:'Undeveloped', water:false, outhouse:false, source:'custom', _new:true
+  };
+  // Add temp to ALL_STOPS and select it
+  ALL_STOPS.push(newCamp);
+  editorSel = ALL_STOPS.length - 1;
+  editorShowForm(newCamp, true);
+  if(editorTempMark) map.removeLayer(editorTempMark);
+  editorTempMark = L.marker([pt.lat, pt.lon]).addTo(map);
+  renderEditorList();
+}
+
+function editorShowForm(c, isNew){
+  const panel = document.getElementById('edit-panel');
+  const srcLabel = c.source==='resupply' ? 'resupply' : c.source==='custom' ? 'custom' : 'halfmile';
+  panel.querySelector('#ef-panel').innerHTML = `
+    <div class="eform">
+      <div class="eform-hdr">
+        <span>${isNew ? 'New Campsite' : 'Edit: '+c.name}</span>
+        <span class="ecamp-src src-${srcLabel}">${srcLabel}</span>
+      </div>
+      <div class="erow"><label class="elbl">Name</label>
+        <input class="einp" id="ef-name" value="${c.name||''}"></div>
+      <div class="erow"><label class="elbl">PCT Mile</label>
+        <input class="einp" id="ef-mile" type="number" step="0.01" value="${c.mile||''}"></div>
+      <div class="erow"><label class="elbl">Latitude</label>
+        <input class="einp" id="ef-lat" type="number" step="0.000001" value="${c.lat||''}"></div>
+      <div class="erow"><label class="elbl">Longitude</label>
+        <input class="einp" id="ef-lon" type="number" step="0.000001" value="${c.lon||''}"></div>
+      <div class="erow"><label class="elbl">Elevation (ft)</label>
+        <input class="einp" id="ef-elev" type="number" step="1" value="${c.elev||''}"></div>
+      <div class="erow"><label class="elbl">Type</label>
+        <select class="einp" id="ef-type">
+          <option${c.type==='Undeveloped'?' selected':''}>Undeveloped</option>
+          <option${c.type==='Established'?' selected':''}>Established</option>
+          <option${c.type==='Resupply'?' selected':''}>Resupply</option>
+        </select></div>
+      <div class="erow"><label class="elbl">Notes</label>
+        <textarea class="einp" id="ef-desc" rows="2" style="resize:vertical">${c.desc||''}</textarea></div>
+      <div class="erow"><label class="elbl">Amenities</label>
+        <div style="display:flex;flex-direction:column;gap:3px">
+          <label class="echk"><input type="checkbox" id="ef-water"${c.water?' checked':''}> 💧 Water</label>
+          <label class="echk"><input type="checkbox" id="ef-outhouse"${c.outhouse?' checked':''}> 🚽 Outhouse</label>
+        </div></div>
+      <div class="eform-btns">
+        <button class="ebtn ebtn-g" onclick="editorSave()">💾 Save</button>
+        <button class="ebtn ebtn-b" onclick="editorSnapHint()">📍 Re-snap to trail</button>
+        ${!isNew && c.source !== 'resupply' ? '<button class="ebtn" style="background:var(--red-bg);color:var(--red);border-color:var(--red)" onclick="editorDelete()">🗑 Delete</button>' : ''}
+        <button class="ebtn" style="background:var(--bg3);color:var(--text3);border-color:var(--border)" onclick="editorCancel()">Cancel</button>
+      </div>
+    </div>`;
+}
+
+function editorSnapHint(){
+  document.getElementById('edit-hint').textContent = '📍 Click map to move this campsite';
+  // Temporarily override click to reposition
+  map._editRepos = true;
+}
+
+function editorSave(){
+  if(editorSel === null) return;
+  const name = document.getElementById('ef-name').value.trim();
+  const mile = parseFloat(document.getElementById('ef-mile').value);
+  const lat  = parseFloat(document.getElementById('ef-lat').value);
+  const lon  = parseFloat(document.getElementById('ef-lon').value);
+  const elev = parseInt(document.getElementById('ef-elev').value)||null;
+  if(!name){ alert('Name is required'); return; }
+  if(isNaN(mile)){ alert('PCT Mile is required'); return; }
+  if(isNaN(lat)||isNaN(lon)){ alert('Lat/lon required'); return; }
+
+  const existing = ALL_STOPS[editorSel];
+  const updated = {
+    ...existing,
+    name, mile, lat, lon, elev,
+    type:     document.getElementById('ef-type').value,
+    desc:     document.getElementById('ef-desc').value.trim()||undefined,
+    water:    document.getElementById('ef-water').checked,
+    outhouse: document.getElementById('ef-outhouse').checked,
+    source:   existing.source||'custom',
+    trailDist: existing.trailDist||null  // preserve existing, null for new
+  };
+  delete updated._new;
+  delete updated.desc; if(document.getElementById('ef-desc').value.trim())
+    updated.desc = document.getElementById('ef-desc').value.trim();
+
+  ALL_STOPS[editorSel] = updated;
+  // Keep CAMPS in sync (non-resupply)
+  if(updated.source !== 'resupply'){
+    const ci = CAMPS.findIndex(c => c === existing);
+    if(ci >= 0) CAMPS[ci] = updated;
+    else CAMPS.push(updated);
+  }
+  // Sort ALL_STOPS by mile
+  ALL_STOPS.sort((a,b)=>(a.mile||0)-(b.mile||0));
+  editorSel = ALL_STOPS.findIndex(c=>c.name===name && Math.abs((c.mile||0)-mile)<0.001);
+
+  editorDirty = true;
+  if(editorTempMark){ map.removeLayer(editorTempMark); editorTempMark=null; }
+  rebuildEditorDots();
+  renderEditorList();
+  document.getElementById('ef-panel').innerHTML =
+    `<div style="padding:12px;font-size:11px;color:var(--green)">✓ Saved "${name}" — click Download to make permanent</div>`;
+}
+
+function editorDelete(){
+  if(editorSel === null) return;
+  const c = ALL_STOPS[editorSel];
+  if(c.source === 'resupply'){ alert('Resupply stops cannot be deleted'); return; }
+  if(!confirm('Delete "' + c.name + '"? This cannot be undone until you reload.')) return;
+  ALL_STOPS.splice(editorSel, 1);
+  const ci = CAMPS.findIndex(x=>x===c||x.name===c.name);
+  if(ci>=0) CAMPS.splice(ci,1);
+  editorSel = null;
+  if(editorTempMark){ map.removeLayer(editorTempMark); editorTempMark=null; }
+  editorDirty = true;
+  rebuildEditorDots();
+  renderEditorList();
+  document.getElementById('ef-panel').innerHTML = '';
+}
+
+function editorCancel(){
+  // Remove unsaved _new entry if present
+  if(editorSel !== null && ALL_STOPS[editorSel] && ALL_STOPS[editorSel]._new){
+    ALL_STOPS.splice(editorSel,1);
+    rebuildEditorDots();
+  }
+  editorSel = null;
+  if(editorTempMark){ map.removeLayer(editorTempMark); editorTempMark=null; }
+  renderEditorList();
+  document.getElementById('ef-panel').innerHTML = '';
+  document.getElementById('edit-hint').textContent = '📍 Click trail to add campsite here';
+}
+
+function editorDownload(){
+  const clean = ALL_STOPS.filter(c=>!c._new).map(c=>{
+    const out={...c}; if(!out.desc) delete out.desc; return out;
+  });
+  const blob = new Blob([JSON.stringify(clean,null,2)],{type:'application/json'});
+  const a = document.createElement('a');
+  a.href = URL.createObjectURL(blob);
+  a.download = 'campsites.json';
+  a.click();
+  URL.revokeObjectURL(a.href);
+  editorDirty = false;
+}
+
+let _editorSearchTimer = null;
+function editorFilterList(q){
+  clearTimeout(_editorSearchTimer);
+  _editorSearchTimer = setTimeout(()=>renderEditorList(q), 150);
+}
+
+function renderEditorList(q=''){
+  const panel = document.getElementById('edit-panel');
+  const listEl = panel.querySelector('#ef-list');
+  if(!listEl) return;
+  q = q.toLowerCase();
+  const filtered = ALL_STOPS.filter(c=>
+    !q || c.name.toLowerCase().includes(q) || String(c.mile||'').includes(q));
+  listEl.innerHTML = '';
+  panel.querySelector('#ef-count').textContent =
+    `${filtered.length} of ${ALL_STOPS.length} campsites`;
+  filtered.forEach(c => {
+    const i = ALL_STOPS.indexOf(c);
+    const row = document.createElement('div');
+    const srcLabel = c.source==='resupply'?'resupply':c.source==='custom'?'custom':'halfmile';
+    row.className = `ecamp-row${i===editorSel?' esel':''}${c.source==='custom'?' enew':''}`;
+    row.innerHTML = `<div class="ecamp-mile">${(c.mile||0).toFixed(1)}</div>
+      <div class="ecamp-name">${c.name||'(unnamed)'}</div>
+      <div class="ecamp-src src-${srcLabel}">${srcLabel}</div>`;
+    row.onclick = () => editorSelectByIndex(i);
+    listEl.appendChild(row);
+  });
+}
+
+function renderEditor(){
+  const panel = document.getElementById('edit-panel');
+  panel.style.flexDirection = 'column';
+  panel.innerHTML = `
+    <div class="edit-toolbar">
+      <button class="ebtn ebtn-g" onclick="editorStartNew()">＋ New</button>
+      <button class="ebtn ebtn-b" style="margin-left:auto" onclick="editorDownload()">⬇ Download campsites.json</button>
+    </div>
+    <div class="edit-search">
+      <input placeholder="Search name or mile…" oninput="editorFilterList(this.value)">
+      <div class="edit-count" id="ef-count"></div>
+    </div>
+    <div class="elist" id="ef-list" style="flex:1;overflow-y:auto"></div>
+    <div id="ef-panel" style="border-top:1px solid var(--border);flex-shrink:0;max-height:55%;overflow-y:auto"></div>`;
+  renderEditorList();
+}
+
+function editorStartNew(){
+  document.getElementById('edit-hint').textContent = '📍 Click on the trail to place new campsite';
+}
+
 function renderAll(){
   renderMap();
   renderList();
   renderChart();
   renderHeader();
   renderWarnings();
-  // Refresh export panel if visible
   if(document.getElementById('exp-panel').style.display==='block') renderExport();
 }
 
@@ -1046,23 +1386,33 @@ async function loadData() {
   const trailLatLngs = TRAIL_COORDS.map(([lon,lat]) => [lat,lon]);
   L.polyline(trailLatLngs, {color:'#e07020', weight:2.5, opacity:0.7}).addTo(map);
 
-  // Draw campsite dots
+  // Static background dot layer (all campsites for reference)
+  const bgDotLayer = L.layerGroup().addTo(map);
   CAMPS.forEach(c => {
     if(!c.lat || !c.lon) return;
     L.circleMarker([c.lat,c.lon], {
       radius:3, color:'#e07020', weight:1.5,
       fillColor:'#ffffff', fillOpacity:0.9, opacity:0.7
     }).bindTooltip(c.name+' (Mi '+c.mile.toFixed(1)+')',
-      {className:'tip-tooltip',direction:'top',offset:[0,-4]}).addTo(map);
+      {className:'tip-tooltip',direction:'top',offset:[0,-4]}).addTo(bgDotLayer);
   });
-
-  // Draw resupply markers
   RESUPPLY.forEach(r => {
     const icon = L.divIcon({className:'',
       html:`<div style="width:14px;height:14px;background:#1d4ed8;border:1.5px solid #93c5fd;border-radius:2px"></div>`,
       iconSize:[14,14],iconAnchor:[7,7]});
     L.marker([r.lat,r.lon],{icon})
-      .bindTooltip(r.name,{className:'tip-tooltip',direction:'top',offset:[0,-4]}).addTo(map);
+      .bindTooltip(r.name,{className:'tip-tooltip',direction:'top',offset:[0,-4]}).addTo(bgDotLayer);
+  });
+
+  // Editor dot layer (rebuilt when campsites change)
+  editorDotLayer = L.layerGroup().addTo(map);
+  editorDotLayer.setZIndex = () => {};  // kept hidden until editor mode
+
+  // Map click handler — used in editor mode for snapping to trail
+  map.on('click', e => {
+    if(!editorMode) return;
+    const snapped = snapToTrail(e.latlng);
+    editorStartNewAtTrailPoint(snapped);
   });
 
   // Fit map to trail camps
@@ -1138,6 +1488,7 @@ rebuildAndRender();
 }
 
 init();
+
 </script>
 </body>
 </html>

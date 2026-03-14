@@ -8,7 +8,8 @@
     "type": "Undeveloped",
     "water": true,
     "outhouse": false,
-    "source": "halfmile"
+    "source": "halfmile",
+    "trailDist": 3.74
   },
   {
     "mile": 2151.363,
@@ -19,7 +20,8 @@
     "type": "Undeveloped",
     "water": true,
     "outhouse": false,
-    "source": "halfmile"
+    "source": "halfmile",
+    "trailDist": 3.815
   },
   {
     "mile": 2153.472,
@@ -30,7 +32,8 @@
     "type": "Undeveloped",
     "water": true,
     "outhouse": false,
-    "source": "halfmile"
+    "source": "halfmile",
+    "trailDist": 5.923
   },
   {
     "mile": 2157.127,
@@ -41,7 +44,8 @@
     "type": "Undeveloped",
     "water": false,
     "outhouse": false,
-    "source": "halfmile"
+    "source": "halfmile",
+    "trailDist": 9.575
   },
   {
     "mile": 2160.441,
@@ -52,7 +56,8 @@
     "type": "Undeveloped",
     "water": false,
     "outhouse": false,
-    "source": "halfmile"
+    "source": "halfmile",
+    "trailDist": 12.876
   },
   {
     "mile": 2162.257,
@@ -63,20 +68,10 @@
     "type": "Undeveloped",
     "water": false,
     "outhouse": false,
-    "source": "halfmile"
+    "source": "halfmile",
+    "trailDist": 14.688
   },
- {
-    "mile": 2169.3,
-    "name": "RockCreek",
-    "lat": 45.76717,
-    "lon": -122.038651,
-    "elev": 1497,
-    "type": "Undeveloped",
-    "water": true,
-    "outhouse": false,
-    "source": "farout"
-  }, 
-{
+  {
     "mile": 2177.115,
     "name": "TroutCreek",
     "lat": 45.811242,
@@ -85,7 +80,8 @@
     "type": "Undeveloped",
     "water": true,
     "outhouse": false,
-    "source": "halfmile"
+    "source": "halfmile",
+    "trailDist": 29.543
   },
   {
     "mile": 2182.593,
@@ -96,7 +92,8 @@
     "type": "Undeveloped",
     "water": false,
     "outhouse": false,
-    "source": "halfmile"
+    "source": "halfmile",
+    "trailDist": 35.044
   },
   {
     "mile": 2186.194,
@@ -107,7 +104,8 @@
     "type": "Undeveloped",
     "water": false,
     "outhouse": false,
-    "source": "halfmile"
+    "source": "halfmile",
+    "trailDist": 38.644
   },
   {
     "mile": 2191.98,
@@ -118,7 +116,8 @@
     "type": "Undeveloped",
     "water": false,
     "outhouse": false,
-    "source": "halfmile"
+    "source": "halfmile",
+    "trailDist": 44.44
   },
   {
     "mile": 2193.549,
@@ -129,7 +128,8 @@
     "type": "Undeveloped",
     "water": true,
     "outhouse": false,
-    "source": "halfmile"
+    "source": "halfmile",
+    "trailDist": 46.018
   },
   {
     "mile": 2198.37,
@@ -140,7 +140,8 @@
     "type": "Established",
     "water": false,
     "outhouse": true,
-    "source": "halfmile"
+    "source": "halfmile",
+    "trailDist": 50.824
   },
   {
     "mile": 2205.645,
@@ -151,7 +152,8 @@
     "type": "Established",
     "water": true,
     "outhouse": false,
-    "source": "halfmile"
+    "source": "halfmile",
+    "trailDist": 58.101
   },
   {
     "mile": 2208.75,
@@ -162,7 +164,8 @@
     "type": "Undeveloped",
     "water": true,
     "outhouse": false,
-    "source": "halfmile"
+    "source": "halfmile",
+    "trailDist": 61.207
   },
   {
     "mile": 2219.217,
@@ -173,7 +176,8 @@
     "type": "Undeveloped",
     "water": false,
     "outhouse": false,
-    "source": "halfmile"
+    "source": "halfmile",
+    "trailDist": 71.685
   },
   {
     "mile": 2221.836,
@@ -184,7 +188,8 @@
     "type": "Undeveloped",
     "water": true,
     "outhouse": true,
-    "source": "halfmile"
+    "source": "halfmile",
+    "trailDist": 74.302
   },
   {
     "mile": 2224.321,
@@ -195,7 +200,8 @@
     "type": "Undeveloped",
     "water": true,
     "outhouse": false,
-    "source": "halfmile"
+    "source": "halfmile",
+    "trailDist": 76.791
   },
   {
     "mile": 2229.485,
@@ -206,7 +212,8 @@
     "type": "Undeveloped",
     "water": false,
     "outhouse": false,
-    "source": "halfmile"
+    "source": "halfmile",
+    "trailDist": 81.974
   },
   {
     "mile": 2230.388,
@@ -217,7 +224,8 @@
     "type": "Undeveloped",
     "water": true,
     "outhouse": false,
-    "source": "halfmile"
+    "source": "halfmile",
+    "trailDist": 82.879
   },
   {
     "mile": 2235.033,
@@ -228,7 +236,8 @@
     "type": "Undeveloped",
     "water": false,
     "outhouse": false,
-    "source": "halfmile"
+    "source": "halfmile",
+    "trailDist": 87.52
   },
   {
     "mile": 2239.469,
@@ -239,7 +248,8 @@
     "type": "Undeveloped",
     "water": true,
     "outhouse": false,
-    "source": "halfmile"
+    "source": "halfmile",
+    "trailDist": 91.958
   },
   {
     "mile": 2240.859,
@@ -250,7 +260,8 @@
     "type": "Undeveloped",
     "water": false,
     "outhouse": false,
-    "source": "halfmile"
+    "source": "halfmile",
+    "trailDist": 93.349
   },
   {
     "mile": 2249.586,
@@ -261,7 +272,8 @@
     "type": "Undeveloped",
     "water": true,
     "outhouse": false,
-    "source": "halfmile"
+    "source": "halfmile",
+    "trailDist": 102.088
   },
   {
     "mile": 2249.953,
@@ -272,7 +284,8 @@
     "type": "Undeveloped",
     "water": true,
     "outhouse": false,
-    "source": "halfmile"
+    "source": "halfmile",
+    "trailDist": 102.455
   },
   {
     "mile": 2254.204,
@@ -283,7 +296,8 @@
     "type": "Undeveloped",
     "water": false,
     "outhouse": false,
-    "source": "halfmile"
+    "source": "halfmile",
+    "trailDist": 106.706
   },
   {
     "mile": 2256.231,
@@ -294,7 +308,8 @@
     "type": "Undeveloped",
     "water": true,
     "outhouse": false,
-    "source": "halfmile"
+    "source": "halfmile",
+    "trailDist": 108.741
   },
   {
     "mile": 2258.714,
@@ -305,7 +320,8 @@
     "type": "Undeveloped",
     "water": false,
     "outhouse": false,
-    "source": "halfmile"
+    "source": "halfmile",
+    "trailDist": 111.23
   },
   {
     "mile": 2259.269,
@@ -316,7 +332,8 @@
     "type": "Undeveloped",
     "water": false,
     "outhouse": false,
-    "source": "halfmile"
+    "source": "halfmile",
+    "trailDist": 111.786
   },
   {
     "mile": 2260.928,
@@ -327,7 +344,8 @@
     "type": "Undeveloped",
     "water": false,
     "outhouse": false,
-    "source": "halfmile"
+    "source": "halfmile",
+    "trailDist": 113.445
   },
   {
     "mile": 2261.2,
@@ -338,7 +356,8 @@
     "type": "Undeveloped",
     "water": true,
     "outhouse": false,
-    "source": "halfmile"
+    "source": "halfmile",
+    "trailDist": 113.716
   },
   {
     "mile": 2269.224,
@@ -349,7 +368,8 @@
     "type": "Undeveloped",
     "water": true,
     "outhouse": false,
-    "source": "halfmile"
+    "source": "halfmile",
+    "trailDist": 121.733
   },
   {
     "mile": 2274.051,
@@ -360,7 +380,8 @@
     "type": "Undeveloped",
     "water": false,
     "outhouse": false,
-    "source": "halfmile"
+    "source": "halfmile",
+    "trailDist": 126.566
   },
   {
     "mile": 2274.496,
@@ -371,7 +392,8 @@
     "type": "Undeveloped",
     "water": false,
     "outhouse": false,
-    "source": "halfmile"
+    "source": "halfmile",
+    "trailDist": 127.007
   },
   {
     "mile": 2275.099,
@@ -382,7 +404,8 @@
     "type": "Undeveloped",
     "water": false,
     "outhouse": false,
-    "source": "halfmile"
+    "source": "halfmile",
+    "trailDist": 127.606
   },
   {
     "mile": 2276.77,
@@ -393,7 +416,8 @@
     "type": "Undeveloped",
     "water": false,
     "outhouse": false,
-    "source": "halfmile"
+    "source": "halfmile",
+    "trailDist": 129.28
   },
   {
     "mile": 2280.357,
@@ -404,7 +428,8 @@
     "type": "Undeveloped",
     "water": false,
     "outhouse": false,
-    "source": "halfmile"
+    "source": "halfmile",
+    "trailDist": 132.868
   },
   {
     "mile": 2280.878,
@@ -415,7 +440,8 @@
     "type": "Undeveloped",
     "water": false,
     "outhouse": false,
-    "source": "halfmile"
+    "source": "halfmile",
+    "trailDist": 133.392
   },
   {
     "mile": 2281.625,
@@ -426,7 +452,8 @@
     "type": "Undeveloped",
     "water": false,
     "outhouse": false,
-    "source": "halfmile"
+    "source": "halfmile",
+    "trailDist": 134.14
   },
   {
     "mile": 2282.78,
@@ -437,7 +464,8 @@
     "type": "Undeveloped",
     "water": true,
     "outhouse": false,
-    "source": "halfmile"
+    "source": "halfmile",
+    "trailDist": 135.298
   },
   {
     "mile": 2283.805,
@@ -448,7 +476,8 @@
     "type": "Undeveloped",
     "water": true,
     "outhouse": false,
-    "source": "halfmile"
+    "source": "halfmile",
+    "trailDist": 136.323
   },
   {
     "mile": 2290.14,
@@ -459,7 +488,8 @@
     "type": "Undeveloped",
     "water": false,
     "outhouse": false,
-    "source": "halfmile"
+    "source": "halfmile",
+    "trailDist": 142.663
   },
   {
     "mile": 2293.304,
@@ -470,7 +500,8 @@
     "type": "Undeveloped",
     "water": true,
     "outhouse": false,
-    "source": "halfmile"
+    "source": "halfmile",
+    "trailDist": 145.833
   },
   {
     "mile": 2295.38,
@@ -486,7 +517,8 @@
       "Store",
       "Laundry"
     ],
-    "desc": "Small ski area with motel and Kracker Barrel convenience store with deli, laundry, showers, WiFi. Accepts hiker resupply packages. 1/2 mi SW of trail."
+    "desc": "Small ski area with motel and Kracker Barrel convenience store with deli, laundry, showers, WiFi. Accepts hiker resupply packages. 1/2 mi SW of trail.",
+    "trailDist": 147.915
   },
   {
     "mile": 2298.158,
@@ -497,7 +529,8 @@
     "type": "Undeveloped",
     "water": true,
     "outhouse": false,
-    "source": "halfmile"
+    "source": "halfmile",
+    "trailDist": 150.687
   },
   {
     "mile": 2301.359,
@@ -508,7 +541,8 @@
     "type": "Undeveloped",
     "water": true,
     "outhouse": false,
-    "source": "halfmile"
+    "source": "halfmile",
+    "trailDist": 153.894
   },
   {
     "mile": 2307.824,
@@ -519,7 +553,8 @@
     "type": "Undeveloped",
     "water": true,
     "outhouse": false,
-    "source": "halfmile"
+    "source": "halfmile",
+    "trailDist": 160.348
   },
   {
     "mile": 2311.399,
@@ -530,18 +565,8 @@
     "type": "Undeveloped",
     "water": true,
     "outhouse": false,
-    "source": "halfmile"
-  },
-  {
-    "mile": 2315.055,
-    "name": "TwoLakesTR",
-    "lat": 46.790844,
-    "lon": -121.447855,
-    "elev": 5603,
-    "type": "Undeveloped",
-    "water": false,
-    "outhouse": false,
-    "source": "halfmile"
+    "source": "halfmile",
+    "trailDist": 163.929
   },
   {
     "mile": 2315.055,
@@ -552,7 +577,20 @@
     "type": "Undeveloped",
     "water": true,
     "outhouse": false,
-    "source": "halfmile"
+    "source": "halfmile",
+    "trailDist": 167.395
+  },
+  {
+    "mile": 2315.055,
+    "name": "TwoLakesTR",
+    "lat": 46.790844,
+    "lon": -121.447855,
+    "elev": 5603,
+    "type": "Undeveloped",
+    "water": false,
+    "outhouse": false,
+    "source": "halfmile",
+    "trailDist": 167.59
   },
   {
     "mile": 2320.884,
@@ -563,7 +601,8 @@
     "type": "Undeveloped",
     "water": true,
     "outhouse": false,
-    "source": "halfmile"
+    "source": "halfmile",
+    "trailDist": 173.398
   },
   {
     "mile": 2321.29,
@@ -574,7 +613,8 @@
     "type": "Undeveloped",
     "water": true,
     "outhouse": false,
-    "source": "halfmile"
+    "source": "halfmile",
+    "trailDist": 173.803
   },
   {
     "mile": 2326.169,
@@ -585,7 +625,8 @@
     "type": "Undeveloped",
     "water": true,
     "outhouse": false,
-    "source": "halfmile"
+    "source": "halfmile",
+    "trailDist": 178.684
   },
   {
     "mile": 2334.282,
@@ -596,7 +637,8 @@
     "type": "Undeveloped",
     "water": false,
     "outhouse": false,
-    "source": "halfmile"
+    "source": "halfmile",
+    "trailDist": 186.809
   },
   {
     "mile": 2334.671,
@@ -607,7 +649,8 @@
     "type": "Undeveloped",
     "water": false,
     "outhouse": false,
-    "source": "halfmile"
+    "source": "halfmile",
+    "trailDist": 187.198
   },
   {
     "mile": 2337.479,
@@ -618,7 +661,8 @@
     "type": "Undeveloped",
     "water": true,
     "outhouse": false,
-    "source": "halfmile"
+    "source": "halfmile",
+    "trailDist": 190.021
   },
   {
     "mile": 2342.306,
@@ -629,7 +673,8 @@
     "type": "Undeveloped",
     "water": true,
     "outhouse": false,
-    "source": "halfmile"
+    "source": "halfmile",
+    "trailDist": 194.858
   },
   {
     "mile": 2347.523,
@@ -640,7 +685,8 @@
     "type": "Established",
     "water": true,
     "outhouse": true,
-    "source": "halfmile"
+    "source": "halfmile",
+    "trailDist": 200.075
   },
   {
     "mile": 2349.143,
@@ -651,7 +697,8 @@
     "type": "Undeveloped",
     "water": false,
     "outhouse": false,
-    "source": "halfmile"
+    "source": "halfmile",
+    "trailDist": 201.691
   },
   {
     "mile": 2352.243,
@@ -662,7 +709,8 @@
     "type": "Undeveloped",
     "water": true,
     "outhouse": false,
-    "source": "halfmile"
+    "source": "halfmile",
+    "trailDist": 204.792
   },
   {
     "mile": 2359.915,
@@ -673,7 +721,8 @@
     "type": "Undeveloped",
     "water": false,
     "outhouse": false,
-    "source": "halfmile"
+    "source": "halfmile",
+    "trailDist": 212.474
   },
   {
     "mile": 2361.391,
@@ -684,7 +733,8 @@
     "type": "Undeveloped",
     "water": false,
     "outhouse": false,
-    "source": "halfmile"
+    "source": "halfmile",
+    "trailDist": 213.944
   },
   {
     "mile": 2364.612,
@@ -695,7 +745,8 @@
     "type": "Undeveloped",
     "water": false,
     "outhouse": false,
-    "source": "halfmile"
+    "source": "halfmile",
+    "trailDist": 217.162
   },
   {
     "mile": 2366.269,
@@ -706,7 +757,8 @@
     "type": "Undeveloped",
     "water": true,
     "outhouse": false,
-    "source": "halfmile"
+    "source": "halfmile",
+    "trailDist": 218.815
   },
   {
     "mile": 2367.661,
@@ -717,7 +769,8 @@
     "type": "Undeveloped",
     "water": false,
     "outhouse": false,
-    "source": "halfmile"
+    "source": "halfmile",
+    "trailDist": 220.203
   },
   {
     "mile": 2368.177,
@@ -728,7 +781,8 @@
     "type": "Undeveloped",
     "water": false,
     "outhouse": false,
-    "source": "halfmile"
+    "source": "halfmile",
+    "trailDist": 220.715
   },
   {
     "mile": 2371.249,
@@ -739,7 +793,8 @@
     "type": "Undeveloped",
     "water": false,
     "outhouse": false,
-    "source": "halfmile"
+    "source": "halfmile",
+    "trailDist": 223.791
   },
   {
     "mile": 2373.368,
@@ -750,7 +805,8 @@
     "type": "Undeveloped",
     "water": false,
     "outhouse": false,
-    "source": "halfmile"
+    "source": "halfmile",
+    "trailDist": 225.912
   },
   {
     "mile": 2384.802,
@@ -761,7 +817,8 @@
     "type": "Undeveloped",
     "water": true,
     "outhouse": false,
-    "source": "halfmile"
+    "source": "halfmile",
+    "trailDist": 237.316
   },
   {
     "mile": 2385.059,
@@ -772,7 +829,8 @@
     "type": "Undeveloped",
     "water": true,
     "outhouse": false,
-    "source": "halfmile"
+    "source": "halfmile",
+    "trailDist": 237.573
   },
   {
     "mile": 2388.152,
@@ -783,7 +841,8 @@
     "type": "Undeveloped",
     "water": true,
     "outhouse": false,
-    "source": "halfmile"
+    "source": "halfmile",
+    "trailDist": 240.668
   },
   {
     "mile": 2393.6,
@@ -799,7 +858,8 @@
       "Store",
       "Restaurant"
     ],
-    "desc": "Summit Inn motel, The Aardvark coffee shop, Chevron convenience store. Accepts resupply packages."
+    "desc": "Summit Inn motel, The Aardvark coffee shop, Chevron convenience store. Accepts resupply packages.",
+    "trailDist": 246.489
   },
   {
     "mile": 2397.254,
@@ -810,7 +870,8 @@
     "type": "Undeveloped",
     "water": false,
     "outhouse": false,
-    "source": "halfmile"
+    "source": "halfmile",
+    "trailDist": 249.79
   },
   {
     "mile": 2397.979,
@@ -821,7 +882,8 @@
     "type": "Undeveloped",
     "water": false,
     "outhouse": false,
-    "source": "halfmile"
+    "source": "halfmile",
+    "trailDist": 250.514
   },
   {
     "mile": 2400.655,
@@ -832,7 +894,8 @@
     "type": "Undeveloped",
     "water": false,
     "outhouse": false,
-    "source": "halfmile"
+    "source": "halfmile",
+    "trailDist": 253.21
   },
   {
     "mile": 2400.776,
@@ -843,7 +906,8 @@
     "type": "Undeveloped",
     "water": true,
     "outhouse": false,
-    "source": "halfmile"
+    "source": "halfmile",
+    "trailDist": 253.319
   },
   {
     "mile": 2400.84,
@@ -854,7 +918,8 @@
     "type": "Established",
     "water": false,
     "outhouse": false,
-    "source": "halfmile"
+    "source": "halfmile",
+    "trailDist": 253.387
   },
   {
     "mile": 2402.929,
@@ -865,7 +930,8 @@
     "type": "Undeveloped",
     "water": false,
     "outhouse": false,
-    "source": "halfmile"
+    "source": "halfmile",
+    "trailDist": 255.472
   },
   {
     "mile": 2403.292,
@@ -876,7 +942,8 @@
     "type": "Undeveloped",
     "water": false,
     "outhouse": false,
-    "source": "halfmile"
+    "source": "halfmile",
+    "trailDist": 255.838
   },
   {
     "mile": 2407.841,
@@ -887,7 +954,8 @@
     "type": "Established",
     "water": false,
     "outhouse": false,
-    "source": "halfmile"
+    "source": "halfmile",
+    "trailDist": 260.38
   },
   {
     "mile": 2408.311,
@@ -898,7 +966,8 @@
     "type": "Undeveloped",
     "water": false,
     "outhouse": false,
-    "source": "halfmile"
+    "source": "halfmile",
+    "trailDist": 260.851
   },
   {
     "mile": 2409.714,
@@ -909,7 +978,8 @@
     "type": "Undeveloped",
     "water": false,
     "outhouse": false,
-    "source": "halfmile"
+    "source": "halfmile",
+    "trailDist": 262.253
   },
   {
     "mile": 2411.683,
@@ -920,7 +990,8 @@
     "type": "Undeveloped",
     "water": true,
     "outhouse": false,
-    "source": "halfmile"
+    "source": "halfmile",
+    "trailDist": 264.214
   },
   {
     "mile": 2414.269,
@@ -931,7 +1002,8 @@
     "type": "Undeveloped",
     "water": true,
     "outhouse": false,
-    "source": "halfmile"
+    "source": "halfmile",
+    "trailDist": 266.808
   },
   {
     "mile": 2415.009,
@@ -942,7 +1014,8 @@
     "type": "Undeveloped",
     "water": false,
     "outhouse": false,
-    "source": "halfmile"
+    "source": "halfmile",
+    "trailDist": 267.55
   },
   {
     "mile": 2423.046,
@@ -953,7 +1026,8 @@
     "type": "Established",
     "water": false,
     "outhouse": false,
-    "source": "halfmile"
+    "source": "halfmile",
+    "trailDist": 275.549
   },
   {
     "mile": 2424.87,
@@ -964,7 +1038,8 @@
     "type": "Undeveloped",
     "water": false,
     "outhouse": false,
-    "source": "halfmile"
+    "source": "halfmile",
+    "trailDist": 277.362
   },
   {
     "mile": 2425.256,
@@ -975,7 +1050,8 @@
     "type": "Undeveloped",
     "water": false,
     "outhouse": false,
-    "source": "halfmile"
+    "source": "halfmile",
+    "trailDist": 277.745
   },
   {
     "mile": 2428.208,
@@ -986,7 +1062,8 @@
     "type": "Undeveloped",
     "water": false,
     "outhouse": false,
-    "source": "halfmile"
+    "source": "halfmile",
+    "trailDist": 280.668
   },
   {
     "mile": 2429.119,
@@ -997,7 +1074,8 @@
     "type": "Undeveloped",
     "water": false,
     "outhouse": false,
-    "source": "halfmile"
+    "source": "halfmile",
+    "trailDist": 281.58
   },
   {
     "mile": 2430.541,
@@ -1008,7 +1086,8 @@
     "type": "Undeveloped",
     "water": true,
     "outhouse": false,
-    "source": "halfmile"
+    "source": "halfmile",
+    "trailDist": 282.991
   },
   {
     "mile": 2433.838,
@@ -1019,7 +1098,8 @@
     "type": "Undeveloped",
     "water": false,
     "outhouse": false,
-    "source": "halfmile"
+    "source": "halfmile",
+    "trailDist": 286.29
   },
   {
     "mile": 2435.321,
@@ -1030,7 +1110,8 @@
     "type": "Undeveloped",
     "water": true,
     "outhouse": false,
-    "source": "halfmile"
+    "source": "halfmile",
+    "trailDist": 287.768
   },
   {
     "mile": 2438.298,
@@ -1041,7 +1122,8 @@
     "type": "Undeveloped",
     "water": false,
     "outhouse": false,
-    "source": "halfmile"
+    "source": "halfmile",
+    "trailDist": 290.727
   },
   {
     "mile": 2438.962,
@@ -1052,7 +1134,8 @@
     "type": "Undeveloped",
     "water": false,
     "outhouse": false,
-    "source": "halfmile"
+    "source": "halfmile",
+    "trailDist": 291.388
   },
   {
     "mile": 2440.267,
@@ -1063,7 +1146,8 @@
     "type": "Undeveloped",
     "water": false,
     "outhouse": false,
-    "source": "halfmile"
+    "source": "halfmile",
+    "trailDist": 292.689
   },
   {
     "mile": 2442.476,
@@ -1074,7 +1158,8 @@
     "type": "Undeveloped",
     "water": false,
     "outhouse": false,
-    "source": "halfmile"
+    "source": "halfmile",
+    "trailDist": 294.887
   },
   {
     "mile": 2445.205,
@@ -1085,7 +1170,8 @@
     "type": "Undeveloped",
     "water": false,
     "outhouse": false,
-    "source": "halfmile"
+    "source": "halfmile",
+    "trailDist": 297.613
   },
   {
     "mile": 2446.944,
@@ -1096,7 +1182,8 @@
     "type": "Undeveloped",
     "water": true,
     "outhouse": false,
-    "source": "halfmile"
+    "source": "halfmile",
+    "trailDist": 299.346
   },
   {
     "mile": 2447.011,
@@ -1107,7 +1194,8 @@
     "type": "Undeveloped",
     "water": false,
     "outhouse": false,
-    "source": "halfmile"
+    "source": "halfmile",
+    "trailDist": 299.408
   },
   {
     "mile": 2449.399,
@@ -1118,7 +1206,8 @@
     "type": "Undeveloped",
     "water": false,
     "outhouse": false,
-    "source": "halfmile"
+    "source": "halfmile",
+    "trailDist": 301.789
   },
   {
     "mile": 2450.262,
@@ -1129,7 +1218,8 @@
     "type": "Undeveloped",
     "water": true,
     "outhouse": false,
-    "source": "halfmile"
+    "source": "halfmile",
+    "trailDist": 302.644
   },
   {
     "mile": 2452.638,
@@ -1140,7 +1230,8 @@
     "type": "Undeveloped",
     "water": false,
     "outhouse": false,
-    "source": "halfmile"
+    "source": "halfmile",
+    "trailDist": 305.023
   },
   {
     "mile": 2453.752,
@@ -1151,7 +1242,8 @@
     "type": "Undeveloped",
     "water": true,
     "outhouse": false,
-    "source": "halfmile"
+    "source": "halfmile",
+    "trailDist": 306.143
   },
   {
     "mile": 2457.229,
@@ -1162,7 +1254,8 @@
     "type": "Established",
     "water": true,
     "outhouse": false,
-    "source": "halfmile"
+    "source": "halfmile",
+    "trailDist": 309.631
   },
   {
     "mile": 2460.342,
@@ -1173,7 +1266,8 @@
     "type": "Established",
     "water": true,
     "outhouse": false,
-    "source": "halfmile"
+    "source": "halfmile",
+    "trailDist": 312.743
   },
   {
     "mile": 2464.62,
@@ -1188,7 +1282,8 @@
       "Restaurant",
       "Store"
     ],
-    "desc": "Stevens Pass ski resort. No lodging at pass; nearest town Skykomish 15 mi W."
+    "desc": "Stevens Pass ski resort. No lodging at pass; nearest town Skykomish 15 mi W.",
+    "trailDist": 317.029
   },
   {
     "mile": 2468.664,
@@ -1199,7 +1294,8 @@
     "type": "Undeveloped",
     "water": false,
     "outhouse": false,
-    "source": "halfmile"
+    "source": "halfmile",
+    "trailDist": 321.076
   },
   {
     "mile": 2470.344,
@@ -1210,7 +1306,8 @@
     "type": "Undeveloped",
     "water": true,
     "outhouse": false,
-    "source": "halfmile"
+    "source": "halfmile",
+    "trailDist": 322.757
   },
   {
     "mile": 2474.368,
@@ -1221,7 +1318,8 @@
     "type": "Undeveloped",
     "water": true,
     "outhouse": false,
-    "source": "halfmile"
+    "source": "halfmile",
+    "trailDist": 326.778
   },
   {
     "mile": 2477.387,
@@ -1232,7 +1330,8 @@
     "type": "Undeveloped",
     "water": false,
     "outhouse": false,
-    "source": "halfmile"
+    "source": "halfmile",
+    "trailDist": 329.791
   },
   {
     "mile": 2479.078,
@@ -1243,7 +1342,8 @@
     "type": "Undeveloped",
     "water": false,
     "outhouse": false,
-    "source": "halfmile"
+    "source": "halfmile",
+    "trailDist": 331.481
   },
   {
     "mile": 2481.723,
@@ -1254,7 +1354,8 @@
     "type": "Undeveloped",
     "water": false,
     "outhouse": false,
-    "source": "halfmile"
+    "source": "halfmile",
+    "trailDist": 334.124
   },
   {
     "mile": 2483.153,
@@ -1265,7 +1366,8 @@
     "type": "Undeveloped",
     "water": true,
     "outhouse": false,
-    "source": "halfmile"
+    "source": "halfmile",
+    "trailDist": 335.559
   },
   {
     "mile": 2487.161,
@@ -1276,7 +1378,8 @@
     "type": "Undeveloped",
     "water": true,
     "outhouse": false,
-    "source": "halfmile"
+    "source": "halfmile",
+    "trailDist": 339.561
   },
   {
     "mile": 2489.703,
@@ -1287,7 +1390,8 @@
     "type": "Established",
     "water": true,
     "outhouse": false,
-    "source": "halfmile"
+    "source": "halfmile",
+    "trailDist": 342.1
   },
   {
     "mile": 2494.022,
@@ -1298,7 +1402,8 @@
     "type": "Undeveloped",
     "water": true,
     "outhouse": true,
-    "source": "halfmile"
+    "source": "halfmile",
+    "trailDist": 346.422
   },
   {
     "mile": 2495.112,
@@ -1309,7 +1414,8 @@
     "type": "Undeveloped",
     "water": false,
     "outhouse": false,
-    "source": "halfmile"
+    "source": "halfmile",
+    "trailDist": 347.513
   },
   {
     "mile": 2498.678,
@@ -1320,7 +1426,8 @@
     "type": "Undeveloped",
     "water": false,
     "outhouse": false,
-    "source": "halfmile"
+    "source": "halfmile",
+    "trailDist": 351.086
   },
   {
     "mile": 2505.896,
@@ -1331,7 +1438,8 @@
     "type": "Established",
     "water": false,
     "outhouse": false,
-    "source": "halfmile"
+    "source": "halfmile",
+    "trailDist": 358.284
   },
   {
     "mile": 2506.025,
@@ -1342,7 +1450,8 @@
     "type": "Undeveloped",
     "water": true,
     "outhouse": false,
-    "source": "halfmile"
+    "source": "halfmile",
+    "trailDist": 358.413
   },
   {
     "mile": 2506.968,
@@ -1353,7 +1462,8 @@
     "type": "Undeveloped",
     "water": true,
     "outhouse": false,
-    "source": "halfmile"
+    "source": "halfmile",
+    "trailDist": 359.353
   },
   {
     "mile": 2507.316,
@@ -1364,7 +1474,8 @@
     "type": "Undeveloped",
     "water": true,
     "outhouse": false,
-    "source": "halfmile"
+    "source": "halfmile",
+    "trailDist": 359.702
   },
   {
     "mile": 2509.273,
@@ -1375,7 +1486,8 @@
     "type": "Undeveloped",
     "water": false,
     "outhouse": false,
-    "source": "halfmile"
+    "source": "halfmile",
+    "trailDist": 361.649
   },
   {
     "mile": 2511.1,
@@ -1386,7 +1498,8 @@
     "type": "Undeveloped",
     "water": false,
     "outhouse": false,
-    "source": "halfmile"
+    "source": "halfmile",
+    "trailDist": 363.468
   },
   {
     "mile": 2511.815,
@@ -1397,7 +1510,8 @@
     "type": "Undeveloped",
     "water": false,
     "outhouse": false,
-    "source": "halfmile"
+    "source": "halfmile",
+    "trailDist": 364.184
   },
   {
     "mile": 2514.916,
@@ -1408,7 +1522,8 @@
     "type": "Undeveloped",
     "water": false,
     "outhouse": false,
-    "source": "halfmile"
+    "source": "halfmile",
+    "trailDist": 367.299
   },
   {
     "mile": 2516.216,
@@ -1419,7 +1534,8 @@
     "type": "Undeveloped",
     "water": true,
     "outhouse": false,
-    "source": "halfmile"
+    "source": "halfmile",
+    "trailDist": 368.606
   },
   {
     "mile": 2518.328,
@@ -1430,7 +1546,8 @@
     "type": "Undeveloped",
     "water": true,
     "outhouse": false,
-    "source": "halfmile"
+    "source": "halfmile",
+    "trailDist": 370.719
   },
   {
     "mile": 2521.256,
@@ -1441,7 +1558,8 @@
     "type": "Undeveloped",
     "water": true,
     "outhouse": false,
-    "source": "halfmile"
+    "source": "halfmile",
+    "trailDist": 373.645
   },
   {
     "mile": 2521.799,
@@ -1452,7 +1570,8 @@
     "type": "Undeveloped",
     "water": true,
     "outhouse": false,
-    "source": "halfmile"
+    "source": "halfmile",
+    "trailDist": 374.186
   },
   {
     "mile": 2529.265,
@@ -1463,7 +1582,8 @@
     "type": "Undeveloped",
     "water": false,
     "outhouse": false,
-    "source": "halfmile"
+    "source": "halfmile",
+    "trailDist": 381.618
   },
   {
     "mile": 2529.842,
@@ -1474,7 +1594,8 @@
     "type": "Undeveloped",
     "water": false,
     "outhouse": false,
-    "source": "halfmile"
+    "source": "halfmile",
+    "trailDist": 382.193
   },
   {
     "mile": 2531.984,
@@ -1485,7 +1606,8 @@
     "type": "Undeveloped",
     "water": false,
     "outhouse": false,
-    "source": "halfmile"
+    "source": "halfmile",
+    "trailDist": 384.334
   },
   {
     "mile": 2535.711,
@@ -1496,7 +1618,8 @@
     "type": "Undeveloped",
     "water": true,
     "outhouse": false,
-    "source": "halfmile"
+    "source": "halfmile",
+    "trailDist": 388.078
   },
   {
     "mile": 2541.037,
@@ -1507,7 +1630,8 @@
     "type": "Undeveloped",
     "water": false,
     "outhouse": false,
-    "source": "halfmile"
+    "source": "halfmile",
+    "trailDist": 393.394
   },
   {
     "mile": 2541.092,
@@ -1518,7 +1642,8 @@
     "type": "Undeveloped",
     "water": false,
     "outhouse": false,
-    "source": "halfmile"
+    "source": "halfmile",
+    "trailDist": 393.45
   },
   {
     "mile": 2543.288,
@@ -1529,7 +1654,8 @@
     "type": "Undeveloped",
     "water": false,
     "outhouse": false,
-    "source": "halfmile"
+    "source": "halfmile",
+    "trailDist": 395.634
   },
   {
     "mile": 2543.711,
@@ -1540,7 +1666,8 @@
     "type": "Undeveloped",
     "water": false,
     "outhouse": false,
-    "source": "halfmile"
+    "source": "halfmile",
+    "trailDist": 396.052
   },
   {
     "mile": 2549.614,
@@ -1551,7 +1678,8 @@
     "type": "Undeveloped",
     "water": false,
     "outhouse": false,
-    "source": "halfmile"
+    "source": "halfmile",
+    "trailDist": 401.931
   },
   {
     "mile": 2552.877,
@@ -1562,7 +1690,8 @@
     "type": "Established",
     "water": true,
     "outhouse": false,
-    "source": "halfmile"
+    "source": "halfmile",
+    "trailDist": 405.192
   },
   {
     "mile": 2554.394,
@@ -1573,7 +1702,8 @@
     "type": "Established",
     "water": false,
     "outhouse": false,
-    "source": "halfmile"
+    "source": "halfmile",
+    "trailDist": 406.703
   },
   {
     "mile": 2557.563,
@@ -1584,7 +1714,8 @@
     "type": "Established",
     "water": false,
     "outhouse": false,
-    "source": "halfmile"
+    "source": "halfmile",
+    "trailDist": 409.867
   },
   {
     "mile": 2559.975,
@@ -1595,7 +1726,8 @@
     "type": "Established",
     "water": true,
     "outhouse": false,
-    "source": "halfmile"
+    "source": "halfmile",
+    "trailDist": 412.293
   },
   {
     "mile": 2562.793,
@@ -1606,7 +1738,8 @@
     "type": "Established",
     "water": true,
     "outhouse": false,
-    "source": "halfmile"
+    "source": "halfmile",
+    "trailDist": 415.107
   },
   {
     "mile": 2564.255,
@@ -1617,7 +1750,8 @@
     "type": "Established",
     "water": true,
     "outhouse": false,
-    "source": "halfmile"
+    "source": "halfmile",
+    "trailDist": 416.578
   },
   {
     "mile": 2567.301,
@@ -1628,7 +1762,8 @@
     "type": "Established",
     "water": true,
     "outhouse": false,
-    "source": "halfmile"
+    "source": "halfmile",
+    "trailDist": 419.639
   },
   {
     "mile": 2568.24,
@@ -1639,26 +1774,8 @@
     "type": "Undeveloped",
     "water": false,
     "outhouse": false,
-    "source": "halfmile"
-  },
-  {
-    "mile": 2575.1,
-    "name": "Stehekin",
-    "lat": 48.380089,
-    "lon": -120.838364,
-    "elev": 1573,
-    "type": "Resupply",
-    "water": true,
-    "outhouse": true,
-    "source": "resupply",
-    "amenities": [
-      "Mail drop",
-      "Lodging",
-      "Bakery",
-      "Store",
-      "Shuttle"
-    ],  
-    "desc": "Meet shuttel to Stehekin. Visit the Bakery."
+    "source": "halfmile",
+    "trailDist": 420.588
   },
   {
     "mile": 2577.32,
@@ -1669,7 +1786,8 @@
     "type": "Established",
     "water": true,
     "outhouse": false,
-    "source": "halfmile"
+    "source": "halfmile",
+    "trailDist": 429.661
   },
   {
     "mile": 2580.185,
@@ -1680,7 +1798,8 @@
     "type": "Established",
     "water": true,
     "outhouse": true,
-    "source": "halfmile"
+    "source": "halfmile",
+    "trailDist": 432.539
   },
   {
     "mile": 2583.608,
@@ -1691,7 +1810,8 @@
     "type": "Established",
     "water": true,
     "outhouse": false,
-    "source": "halfmile"
+    "source": "halfmile",
+    "trailDist": 435.966
   },
   {
     "mile": 2585.813,
@@ -1702,11 +1822,12 @@
     "type": "Established",
     "water": true,
     "outhouse": false,
-    "source": "halfmile"
+    "source": "halfmile",
+    "trailDist": 438.176
   },
   {
     "mile": 2591.63,
-    "name": "Mazama (Hwy 20)",
+    "name": "Hwy 20 / Mazama",
     "lat": 48.5148,
     "lon": -120.73388,
     "type": "Resupply",
@@ -1720,7 +1841,8 @@
       "Store",
       "Trail Angel"
     ],
-    "desc": "Mazama is 22.4 mi E on Hwy 20. Restaurants, motels, Mazama Store, Goat's Beard Mountain Supplies, trail angel Ravensong."
+    "desc": "Mazama is 22.4 mi E on Hwy 20. Restaurants, motels, Mazama Store, Goat's Beard Mountain Supplies, trail angel Ravensong.",
+    "trailDist": 443.994
   },
   {
     "mile": 2594.083,
@@ -1731,7 +1853,8 @@
     "type": "Undeveloped",
     "water": false,
     "outhouse": false,
-    "source": "halfmile"
+    "source": "halfmile",
+    "trailDist": 446.455
   },
   {
     "mile": 2595.44,
@@ -1742,7 +1865,8 @@
     "type": "Established",
     "water": false,
     "outhouse": false,
-    "source": "halfmile"
+    "source": "halfmile",
+    "trailDist": 447.824
   },
   {
     "mile": 2601.386,
@@ -1753,7 +1877,8 @@
     "type": "Undeveloped",
     "water": true,
     "outhouse": false,
-    "source": "halfmile"
+    "source": "halfmile",
+    "trailDist": 453.765
   },
   {
     "mile": 2602.3,
@@ -1764,7 +1889,8 @@
     "type": "Undeveloped",
     "water": false,
     "outhouse": false,
-    "source": "halfmile"
+    "source": "halfmile",
+    "trailDist": 454.683
   },
   {
     "mile": 2607.084,
@@ -1775,7 +1901,8 @@
     "type": "Established",
     "water": true,
     "outhouse": false,
-    "source": "halfmile"
+    "source": "halfmile",
+    "trailDist": 459.454
   },
   {
     "mile": 2609.918,
@@ -1786,7 +1913,8 @@
     "type": "Undeveloped",
     "water": false,
     "outhouse": false,
-    "source": "halfmile"
+    "source": "halfmile",
+    "trailDist": 462.313
   },
   {
     "mile": 2612.627,
@@ -1797,7 +1925,8 @@
     "type": "Established",
     "water": false,
     "outhouse": false,
-    "source": "halfmile"
+    "source": "halfmile",
+    "trailDist": 465.003
   },
   {
     "mile": 2622.535,
@@ -1808,7 +1937,8 @@
     "type": "Undeveloped",
     "water": false,
     "outhouse": true,
-    "source": "halfmile"
+    "source": "halfmile",
+    "trailDist": 474.919
   },
   {
     "mile": 2626.076,
@@ -1819,7 +1949,8 @@
     "type": "Undeveloped",
     "water": false,
     "outhouse": false,
-    "source": "halfmile"
+    "source": "halfmile",
+    "trailDist": 478.436
   },
   {
     "mile": 2627.67,
@@ -1830,7 +1961,8 @@
     "type": "Undeveloped",
     "water": false,
     "outhouse": false,
-    "source": "halfmile"
+    "source": "halfmile",
+    "trailDist": 480.019
   },
   {
     "mile": 2628.283,
@@ -1841,7 +1973,8 @@
     "type": "Undeveloped",
     "water": true,
     "outhouse": false,
-    "source": "halfmile"
+    "source": "halfmile",
+    "trailDist": 480.625
   },
   {
     "mile": 2630.583,
@@ -1852,7 +1985,8 @@
     "type": "Undeveloped",
     "water": false,
     "outhouse": false,
-    "source": "halfmile"
+    "source": "halfmile",
+    "trailDist": 482.92
   },
   {
     "mile": 2630.68,
@@ -1863,7 +1997,8 @@
     "type": "Undeveloped",
     "water": false,
     "outhouse": false,
-    "source": "halfmile"
+    "source": "halfmile",
+    "trailDist": 483.019
   },
   {
     "mile": 2631.814,
@@ -1874,7 +2009,8 @@
     "type": "Undeveloped",
     "water": false,
     "outhouse": false,
-    "source": "halfmile"
+    "source": "halfmile",
+    "trailDist": 484.163
   },
   {
     "mile": 2633.514,
@@ -1885,7 +2021,8 @@
     "type": "Undeveloped",
     "water": false,
     "outhouse": false,
-    "source": "halfmile"
+    "source": "halfmile",
+    "trailDist": 485.86
   },
   {
     "mile": 2638.365,
@@ -1896,7 +2033,8 @@
     "type": "Undeveloped",
     "water": false,
     "outhouse": false,
-    "source": "halfmile"
+    "source": "halfmile",
+    "trailDist": 490.707
   },
   {
     "mile": 2642.056,
@@ -1907,7 +2045,8 @@
     "type": "Undeveloped",
     "water": false,
     "outhouse": false,
-    "source": "halfmile"
+    "source": "halfmile",
+    "trailDist": 494.372
   },
   {
     "mile": 2646.744,
@@ -1918,7 +2057,8 @@
     "type": "Undeveloped",
     "water": true,
     "outhouse": false,
-    "source": "halfmile"
+    "source": "halfmile",
+    "trailDist": 499.058
   },
   {
     "mile": 2649.424,
@@ -1929,6 +2069,7 @@
     "type": "Undeveloped",
     "water": false,
     "outhouse": false,
-    "source": "halfmile"
+    "source": "halfmile",
+    "trailDist": 501.721
   }
 ]
