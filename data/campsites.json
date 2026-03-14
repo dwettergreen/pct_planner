@@ -74,7 +74,7 @@
     "type": "Undeveloped",
     "water": true,
     "outhouse": false,
-    "source": "wayout"
+    "source": "farout"
   }, 
 {
     "mile": 2177.115,
@@ -1642,6 +1642,24 @@
     "source": "halfmile"
   },
   {
+    "mile": 2575.1,
+    "name": "Stehekin",
+    "lat": 48.380089,
+    "lon": -120.838364,
+    "elev": 1573,
+    "type": "Resupply",
+    "water": true,
+    "outhouse": true,
+    "source": "resupply",
+    "amenities": [
+      "Mail drop",
+      "Lodging",
+      "Bakery",
+      "Store",
+      "Shuttle"
+    ],
+  },
+  {
     "mile": 2577.32,
     "name": "BridgeCreekCamp",
     "lat": 48.429472,
@@ -1687,7 +1705,7 @@
   },
   {
     "mile": 2591.63,
-    "name": "Hwy 20 / Mazama",
+    "name": "Mazama (Hwy 20)",
     "lat": 48.5148,
     "lon": -120.73388,
     "type": "Resupply",
