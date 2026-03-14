@@ -479,6 +479,33 @@ function snapToTrail(latlng){
   });
   return { lat: TRAIL_COORDS[bestI][1], lon: TRAIL_COORDS[bestI][0] };
 }
+
+// Compute cumulative arc-length along TRAIL_COORDS to the nearest point (in miles).
+// Called once at loadData to build a cumulative distance array, then used for new camps.
+let _trailCum = null;  // cumulative miles from trail start, one entry per TRAIL_COORDS point
+
+function buildTrailCum(){
+  const R = 3958.8;
+  _trailCum = [0];
+  for(let i=1; i<TRAIL_COORDS.length; i++){
+    const [lon1,lat1] = TRAIL_COORDS[i-1];
+    const [lon2,lat2] = TRAIL_COORDS[i];
+    const φ1=lat1*Math.PI/180, φ2=lat2*Math.PI/180;
+    const dφ=(lat2-lat1)*Math.PI/180, dλ=(lon2-lon1)*Math.PI/180;
+    const a=Math.sin(dφ/2)**2 + Math.cos(φ1)*Math.cos(φ2)*Math.sin(dλ/2)**2;
+    _trailCum.push(_trailCum[i-1] + R*2*Math.asin(Math.sqrt(a)));
+  }
+}
+
+function trailDistFromLatLon(lat, lon){
+  if(!_trailCum) buildTrailCum();
+  let bestI=0, bd=Infinity;
+  TRAIL_COORDS.forEach(([tlon,tlat],i)=>{
+    const d=(tlat-lat)**2+(tlon-lon)**2;
+    if(d<bd){ bd=d; bestI=i; }
+  });
+  return parseFloat(_trailCum[bestI].toFixed(3));
+}
 function showSnap(latlng){
   const p = map.latLngToContainerPoint(latlng);
   const el = document.createElement('div');
@@ -1125,7 +1152,9 @@ function editorStartNewAtTrailPoint(pt){
   const newCamp = {
     name:'', mile: parseFloat(nearMile.toFixed(2)),
     lat: parseFloat(pt.lat.toFixed(6)), lon: parseFloat(pt.lon.toFixed(6)),
-    elev:null, type:'Undeveloped', water:false, outhouse:false, source:'custom', _new:true
+    elev:null, type:'Undeveloped', water:false, outhouse:false, source:'custom',
+    trailDist: trailDistFromLatLon(pt.lat, pt.lon),
+    _new:true
   };
   // Add temp to ALL_STOPS and select it
   ALL_STOPS.push(newCamp);
@@ -1203,7 +1232,7 @@ function editorSave(){
     water:    document.getElementById('ef-water').checked,
     outhouse: document.getElementById('ef-outhouse').checked,
     source:   existing.source||'custom',
-    trailDist: existing.trailDist||null  // preserve existing, null for new
+    trailDist: trailDistFromLatLon(lat, lon)  // always recompute from geometry
   };
   delete updated._new;
   delete updated.desc; if(document.getElementById('ef-desc').value.trim())
@@ -1418,6 +1447,9 @@ async function loadData() {
     L.marker([r.lat,r.lon],{icon})
       .bindTooltip(r.name,{className:'tip-tooltip',direction:'top',offset:[0,-4]}).addTo(bgDotLayer);
   });
+
+  // Pre-build cumulative trail distance array for editor use
+  buildTrailCum();
 
   // Editor dot layer (rebuilt when campsites change)
   editorDotLayer = L.layerGroup().addTo(map);
