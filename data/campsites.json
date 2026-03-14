@@ -72,6 +72,19 @@
     "trailDist": 14.688
   },
   {
+    "name": "RockCreekBridge",
+    "mile": 2162.26,
+    "lat": 45.767198,
+    "lon": -122.039111,
+    "elev": 1497,
+    "type": "Undeveloped",
+    "water": true,
+    "outhouse": false,
+    "source": "custom",
+    "trailDist": null,
+    "desc": "Three sites south of bridge"
+  },
+  {
     "mile": 2177.115,
     "name": "TroutCreek",
     "lat": 45.811242,
@@ -518,7 +531,9 @@
       "Laundry"
     ],
     "desc": "Small ski area with motel and Kracker Barrel convenience store with deli, laundry, showers, WiFi. Accepts hiker resupply packages. 1/2 mi SW of trail.",
-    "trailDist": 147.915
+    "trailDist": 147.915,
+    "isResupply": true,
+    "elev": null
   },
   {
     "mile": 2298.158,
@@ -859,7 +874,9 @@
       "Restaurant"
     ],
     "desc": "Summit Inn motel, The Aardvark coffee shop, Chevron convenience store. Accepts resupply packages.",
-    "trailDist": 246.489
+    "trailDist": 246.489,
+    "isResupply": true,
+    "elev": null
   },
   {
     "mile": 2397.254,
@@ -1283,7 +1300,9 @@
       "Store"
     ],
     "desc": "Stevens Pass ski resort. No lodging at pass; nearest town Skykomish 15 mi W.",
-    "trailDist": 317.029
+    "trailDist": 317.029,
+    "isResupply": true,
+    "elev": null
   },
   {
     "mile": 2468.664,
@@ -1778,6 +1797,19 @@
     "trailDist": 420.588
   },
   {
+    "name": "Stehekin High Bridge & Cabin",
+    "mile": 2568.24,
+    "lat": 48.380097,
+    "lon": -120.837277,
+    "elev": 1573,
+    "type": "Resupply",
+    "water": true,
+    "outhouse": true,
+    "source": "custom",
+    "trailDist": null,
+    "desc": "Camping in Stehekin. Shuttle daily."
+  },
+  {
     "mile": 2577.32,
     "name": "BridgeCreekCamp",
     "lat": 48.429472,
@@ -1842,7 +1874,9 @@
       "Trail Angel"
     ],
     "desc": "Mazama is 22.4 mi E on Hwy 20. Restaurants, motels, Mazama Store, Goat's Beard Mountain Supplies, trail angel Ravensong.",
-    "trailDist": 443.994
+    "trailDist": 443.994,
+    "isResupply": true,
+    "elev": null
   },
   {
     "mile": 2594.083,
