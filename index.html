@@ -1087,22 +1087,40 @@ rebuildAndRender();
       const planResp = await fetch('data/plan.json');
       if(planResp.ok) {
         const saved = await planResp.json();
-        if(saved && saved.settings && saved.settings.avgPace) {
-          document.getElementById('avg-pace').value   = saved.settings.avgPace;
-          document.getElementById('flex-pace').value  = saved.settings.flexPace || 3;
-          document.getElementById('start-date').value = saved.settings.startDate || '2026-07-01';
-          document.getElementById('melt-date').value  = saved.settings.meltDate  || '2026-06-01';
+        // Restore settings if present
+        const s = saved && saved.settings;
+        if(s && s.avgPace) {
+          document.getElementById('avg-pace').value   = s.avgPace;
+          document.getElementById('flex-pace').value  = s.flexPace || 3;
+          document.getElementById('start-date').value = s.startDate || '2026-07-01';
+          document.getElementById('melt-date').value  = s.meltDate  || '2026-06-01';
           syncLabels();
           rebuildAndRender();
-          if(saved.overrides && saved.overrides.length && plan.length){
-            let any=false;
-            saved.overrides.forEach(ov=>{
-              if(ov.i>=plan.length) return;
-              const m=ALL_STOPS.find(c=>Math.abs(c.mile-ov.mile)<0.01);
-              if(m){plan[ov.i]={...m,isTerminus:false};any=true;}
+        }
+        // Re-apply overrides: match by mile against ALL_STOPS, slot into nearest night
+        if(saved && saved.overrides && saved.overrides.length && plan.length) {
+          let any = false;
+          saved.overrides.forEach(ov => {
+            // Find the camp in ALL_STOPS closest to the saved mile
+            const camp = ALL_STOPS.reduce((best, c) => {
+              const d = Math.abs(c.mile - ov.mile);
+              return d < Math.abs(best.mile - ov.mile) ? c : best;
+            }, ALL_STOPS[0]);
+            if(!camp || Math.abs(camp.mile - ov.mile) > 1.0) return; // no close match
+            // Find which night in the current plan this override belongs to:
+            // the night whose optimal mile is closest to the saved mile
+            let bestNight = -1, bestDist = Infinity;
+            plan.forEach((c, i) => {
+              if(c.isTerminus) return;
+              const d = Math.abs(c.mile - ov.mile);
+              if(d < bestDist) { bestDist = d; bestNight = i; }
             });
-            if(any) renderAll();
-          }
+            if(bestNight >= 0 && bestDist < 30) {
+              plan[bestNight] = {...camp, isTerminus:false};
+              any = true;
+            }
+          });
+          if(any) renderAll();
         }
       }
     } catch(e) { /* no saved plan — fine */ }
