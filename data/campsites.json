@@ -73,7 +73,7 @@
   },
   {
     "name": "RockCreekBridge",
-    "mile": 2162.26,
+    "mile": 2169.3,
     "lat": 45.767198,
     "lon": -122.039111,
     "elev": 1497,
@@ -81,7 +81,7 @@
     "water": true,
     "outhouse": false,
     "source": "custom",
-    "trailDist": null,
+    "trailDist": 17.167,
     "desc": "Three sites south of bridge"
   },
   {
@@ -1798,7 +1798,7 @@
   },
   {
     "name": "Stehekin High Bridge & Cabin",
-    "mile": 2568.24,
+    "mile": 2575.1,
     "lat": 48.380097,
     "lon": -120.837277,
     "elev": 1573,
@@ -1806,7 +1806,7 @@
     "water": true,
     "outhouse": true,
     "source": "custom",
-    "trailDist": null,
+    "trailDist": 373.6,
     "desc": "Camping in Stehekin. Shuttle daily."
   },
   {
