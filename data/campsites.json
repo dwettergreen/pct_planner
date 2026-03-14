@@ -1035,6 +1035,19 @@
     "trailDist": 267.55
   },
   {
+    "name": "CS24223",
+    "mile": 2423,
+    "lat": 47.49983,
+    "lon": -121.246549,
+    "elev": 5473,
+    "type": "Undeveloped",
+    "water": true,
+    "outhouse": false,
+    "source": "custom",
+    "trailDist": 277.234,
+    "desc": "Amazing views"
+  },
+  {
     "mile": 2423.046,
     "name": "CS2423",
     "lat": 47.501721,

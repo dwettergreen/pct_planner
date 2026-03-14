@@ -1,6 +1,94 @@
 {
   "version": 1,
-  "saved": null,
-  "settings": {},
-  "overrides": []
+  "saved": "2026-03-14T21:18:38.965Z",
+  "settings": {
+    "startDate": "2026-07-01",
+    "meltDate": "2026-06-01",
+    "avgPace": "12",
+    "flexPace": "3"
+  },
+  "overrides": [
+    {
+      "i": 0,
+      "name": "CS2157",
+      "mile": 2157.127
+    },
+    {
+      "i": 1,
+      "name": "RockCreekBridge",
+      "mile": 2169.3
+    },
+    {
+      "i": 2,
+      "name": "TroutCreek",
+      "mile": 2177.115
+    },
+    {
+      "i": 3,
+      "name": "CS2191",
+      "mile": 2191.98
+    },
+    {
+      "i": 4,
+      "name": "BlueLakeCS",
+      "mile": 2205.645
+    },
+    {
+      "i": 5,
+      "name": "CS2219",
+      "mile": 2219.217
+    },
+    {
+      "i": 6,
+      "name": "CS2229",
+      "mile": 2229.485
+    },
+    {
+      "i": 7,
+      "name": "CS2240",
+      "mile": 2240.859
+    },
+    {
+      "i": 8,
+      "name": "CS2254",
+      "mile": 2254.204
+    },
+    {
+      "i": 20,
+      "name": "Snoqualmie Pass (I-90)",
+      "mile": 2393.6
+    },
+    {
+      "i": 21,
+      "name": "CS2407",
+      "mile": 2407.841
+    },
+    {
+      "i": 22,
+      "name": "CS24223",
+      "mile": 2423
+    },
+    {
+      "i": 23,
+      "name": "CS2429",
+      "mile": 2429.119
+    },
+    {
+      "i": 24,
+      "name": "DeepLakeOutlet",
+      "mile": 2435.321
+    },
+    {
+      "i": 25,
+      "name": "CS2445",
+      "mile": 2445.205
+    },
+    {
+      "i": 26,
+      "name": "Stevens Pass (Hwy 2)",
+      "mile": 2464.62
+    }
+  ],
+  "nights": 41,
+  "totalMiles": "505.8"
 }
