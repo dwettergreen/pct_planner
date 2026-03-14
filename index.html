@@ -465,8 +465,15 @@ function syncLabels(){
   document.getElementById('range-lbl').textContent = (avg-flex).toFixed(1) + ' – ' + (avg+flex).toFixed(1) + ' mi/day';
 }
 function snapNearest(latlng){
+  // First find the nearest trail point to get a trailDist reference
+  const refTD = trailDistFromLatLon(latlng.lat, latlng.lng);
+  // Then snap to the campsite with the closest trailDist
+  // (prefer trail-order proximity over raw lat/lon distance)
   let best=null, bd=Infinity;
-  ALL_STOPS.forEach(c=>{ const d=(c.lat-latlng.lat)**2+(c.lon-latlng.lng)**2; if(d<bd){bd=d;best=c;} });
+  ALL_STOPS.forEach(c=>{
+    const d = Math.abs((c.trailDist != null ? c.trailDist : 0) - refTD);
+    if(d<bd){ bd=d; best=c; }
+  });
   return best;
 }
 
@@ -504,6 +511,26 @@ function buildTrailCum(){
     const scale = END_TRAIL_DIST / rawTotal;
     _trailCum = _trailCum.map(d => d * scale);
   }
+}
+
+// Interpolate a Halfmile mile marker from a trailDist value,
+// using the two flanking campsites in ALL_STOPS as reference points.
+function interpolateMile(td){
+  // Sort a snapshot by trailDist
+  const sorted = ALL_STOPS
+    .filter(c => c.trailDist != null && c.mile != null)
+    .sort((a,b) => a.trailDist - b.trailDist);
+  if(!sorted.length) return START_MILE + td;
+  // Find flanking pair
+  let lo = sorted[0], hi = sorted[sorted.length-1];
+  for(let i=0; i<sorted.length-1; i++){
+    if(sorted[i].trailDist <= td && sorted[i+1].trailDist >= td){
+      lo = sorted[i]; hi = sorted[i+1]; break;
+    }
+  }
+  if(lo === hi || hi.trailDist === lo.trailDist) return lo.mile;
+  const t = (td - lo.trailDist) / (hi.trailDist - lo.trailDist);
+  return parseFloat((lo.mile + t * (hi.mile - lo.mile)).toFixed(2));
 }
 
 function trailDistFromLatLon(lat, lon){
@@ -1159,15 +1186,9 @@ function editorSelectByIndex(i){
 }
 
 function editorStartNewAtTrailPoint(pt){
-  // Estimate mile from nearest camp
-  let nearMile = START_MILE;
-  let nearDist = Infinity;
-  ALL_STOPS.forEach(c => {
-    const d=(c.lat-pt.lat)**2+(c.lon-pt.lon)**2;
-    if(d<nearDist){ nearDist=d; nearMile=c.mile||START_MILE; }
-  });
+  const td = trailDistFromLatLon(pt.lat, pt.lon);
   const newCamp = {
-    name:'', mile: parseFloat(nearMile.toFixed(2)),
+    name:'', mile: interpolateMile(td),
     lat: parseFloat(pt.lat.toFixed(6)), lon: parseFloat(pt.lon.toFixed(6)),
     elev:null, type:'Undeveloped', water:false, outhouse:false, source:'custom',
     trailDist: trailDistFromLatLon(pt.lat, pt.lon),
@@ -1249,7 +1270,11 @@ function editorSave(){
     water:    document.getElementById('ef-water').checked,
     outhouse: document.getElementById('ef-outhouse').checked,
     source:   existing.source||'custom',
-    trailDist: trailDistFromLatLon(lat, lon)  // always recompute from geometry
+    trailDist: trailDistFromLatLon(lat, lon),  // always recompute from geometry
+    // For custom camps, interpolate mile from trailDist unless user edited it
+    mile: (existing.source === 'custom' || existing._new)
+      ? interpolateMile(trailDistFromLatLon(lat, lon))
+      : mile
   };
   delete updated._new;
   delete updated.desc; if(document.getElementById('ef-desc').value.trim())
