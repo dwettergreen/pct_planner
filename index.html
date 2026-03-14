@@ -526,6 +526,7 @@ function showSnap(latlng){
 function buildPlan(){
   const {avg} = getPace();
   const sd       = getStartDate();
+  console.log('[buildPlan] avg='+avg+' T='+Math.round((END_TRAIL_DIST-START_TRAIL_DIST)/avg)  +' N='+ALL_STOPS.length  +' d1='+((ALL_STOPS[0]||{}).trailDist)  +' dN='+((ALL_STOPS[ALL_STOPS.length-1]||{}).trailDist));
   const startDoy = Math.floor((sd - new Date(sd.getFullYear(), 0, 0)) / 86400000);
 
   const TOTAL = END_TRAIL_DIST - START_TRAIL_DIST;  // geometry-derived total miles
