@@ -600,7 +600,7 @@ function renderMap(){
         box-shadow:0 2px 8px rgba(0,0,0,0.55);
         cursor:${isTerm?'default':'grab'};
         ${isActive?'box-shadow:0 0 0 3px #ffd700,0 2px 8px rgba(0,0,0,0.55);':''}
-      ">${isTerm?'🏁':idx+1}</div>`,
+      ">${isTerm ? plan.length : idx+1}</div>`,
       iconSize:[isTerm?22:20,isTerm?22:20],
       iconAnchor:[isTerm?11:10,isTerm?11:10]
     });
@@ -1386,13 +1386,19 @@ async function loadData() {
   const trailLatLngs = TRAIL_COORDS.map(([lon,lat]) => [lat,lon]);
   L.polyline(trailLatLngs, {color:'#e07020', weight:2.5, opacity:0.7}).addTo(map);
 
-  // Start flag marker at Bridge of Gods
+  // Start marker at Bridge of Gods — first point of trail.geojson
+  const startLatLon = [TRAIL_COORDS[0][1], TRAIL_COORDS[0][0]];
   const startIcon = L.divIcon({className:'',
-    html:`<div style="font-size:18px;line-height:1;filter:drop-shadow(0 1px 2px rgba(0,0,0,0.4))">🚩</div>`,
-    iconSize:[20,20], iconAnchor:[2,18]});
-  L.marker([45.6600, -121.9044], {icon:startIcon, interactive:true})
+    html:`<div style="
+      width:20px;height:20px;border-radius:50%;
+      background:#2a7d4f;border:2px solid rgba(255,255,255,0.85);
+      display:flex;align-items:center;justify-content:center;
+      font-family:'Source Code Pro',monospace;font-size:10px;font-weight:700;
+      color:#fff;box-shadow:0 2px 6px rgba(0,0,0,0.45);">0</div>`,
+    iconSize:[20,20], iconAnchor:[10,10]});
+  L.marker(startLatLon, {icon:startIcon, interactive:true})
     .bindTooltip('Bridge of Gods — Start (Mi 2147.3)',
-      {className:'tip-tooltip', direction:'top', offset:[0,-18]})
+      {className:'tip-tooltip', direction:'top', offset:[0,-14]})
     .addTo(map);
 
   // Static background dot layer (all campsites for reference)
