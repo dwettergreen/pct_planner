@@ -260,7 +260,7 @@ let RESUPPLY     = [];
 let ALL_STOPS    = [];
 let TRAIL_COORDS = [];
 
-const TERMINUS = { name:'Northern Terminus', lat:49.00000, lon:-120.802222, elev:4247, mile:END_MILE, isTerminus:true };
+const TERMINUS = { name:'Northern Terminus', lat:48.9612, lon:-120.7625, elev:null, mile:END_MILE, isTerminus:true };
 
 // ════════════════════════════════════════════════════
 // STATE
@@ -546,7 +546,7 @@ function renderMap(){
 
     // Popup
     const badges=[];
-    if(camp.isResupply) badges.push(`<span class="badge" style="background:#deeaf8;color:#1a5090;border:1px solid #8ab4dc">🛑 Resupply</span>`);
+    if(camp.isResupply) badges.push(`<span class="badge" style="background:#deeaf8;color:#1a5090;border:1px solid #8ab4dc">Resupply</span>`);
     if(camp.water) badges.push(`<span class="badge" style="background:#deeaf8;color:#1a5090;border:1px solid #8ab4dc">💧 Water</span>`);
     if(camp.outhouse) badges.push(`<span class="badge" style="background:#ede8f8;color:#6a30a0;border:1px solid #b090d8">🚽 Outhouse</span>`);
     if(camp.type==='Established') badges.push(`<span class="badge" style="background:#d8f0e4;color:#1a6038;border:1px solid #70b890">Established</span>`);
@@ -622,8 +622,8 @@ function renderList(){
     const nightMpL = mosquitoLabel(nightMp);
     const badges=[];
     if(!isTerm){
-      if(camp.type==='Established') badges.push(`<span class="badge" style="background:#d8f0e4;color:#1a6038;border:1px solid #70b890">Est</span>`);
-      if(camp.isResupply) badges.push(`<span class="badge" style="background:#deeaf8;color:#1a5090;border:1px solid #8ab4dc">🛑</span>`);
+      if(camp.type==='Established') badges.push(`<span class="badge" style="background:#d8f0e4;color:#1a6038;border:1px solid #70b890">Established</span>`);
+      if(camp.isResupply) badges.push(`<span class="badge" style="background:#deeaf8;color:#1a5090;border:1px solid #8ab4dc">Resupply</span>`);
       if(camp.water) badges.push(`<span class="badge" style="background:#deeaf8;color:#1a5090;border:1px solid #8ab4dc">💧</span>`);
       if(camp.outhouse) badges.push(`<span class="badge" style="background:#ede8f8;color:#6a30a0;border:1px solid #b090d8">🚽</span>`);
       if(isWarn) badges.push(`<span class="badge" style="background:#fde8e8;color:#a01818;border:1px solid #e09090">⚠ ${mi.toFixed(1)}mi</span>`);
