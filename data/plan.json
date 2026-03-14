@@ -1,6 +1,34 @@
 {
   "version": 1,
-  "saved": null,
-  "settings": {},
-  "overrides": []
+  "saved": "2026-03-14T04:57:48.003Z",
+  "settings": {
+    "startDate": "2026-07-01",
+    "meltDate": "2026-06-01",
+    "avgPace": "13",
+    "flexPace": "3"
+  },
+  "overrides": [
+    {
+      "i": 18,
+      "name": "Snoqualmie Pass (I-90)",
+      "mile": 2393.6
+    },
+    {
+      "i": 19,
+      "name": "CS2407",
+      "mile": 2407.841
+    },
+    {
+      "i": 24,
+      "name": "Stevens Pass (Hwy 2)",
+      "mile": 2464.62
+    },
+    {
+      "i": 25,
+      "name": "CS2477",
+      "mile": 2477.387
+    }
+  ],
+  "nights": 38,
+  "totalMiles": "505.8"
 }
