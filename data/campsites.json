@@ -65,7 +65,18 @@
     "outhouse": false,
     "source": "halfmile"
   },
-  {
+ {
+    "mile": 2169.3,
+    "name": "RockCreek",
+    "lat": 45.76717,
+    "lon": -122.038651,
+    "elev": 1497,
+    "type": "Undeveloped",
+    "water": true,
+    "outhouse": false,
+    "source": "wayout"
+  }, 
+{
     "mile": 2177.115,
     "name": "TroutCreek",
     "lat": 45.811242,
