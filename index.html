@@ -213,8 +213,8 @@ input[type=date]{flex:1;background:#ffffff;border:1px solid #8090b0;color:#1a223
     <div class="stabs">
       <div class="stab on" id="tab-itin" onclick="showTab('itin')">Itinerary</div>
       <div class="stab" id="tab-sum" onclick="showTab('sum')">Summary</div>
-      <div class="stab" id="tab-exp" onclick="showTab('exp')">Export</div>
       <div class="stab" id="tab-edit" onclick="showTab('edit')">Editor</div>
+      <div class="stab" id="tab-exp" onclick="showTab('exp')">Export</div>
     </div>
     <div class="controls">
       <div class="crow">
@@ -1385,6 +1385,15 @@ async function loadData() {
   // Draw the PCT trail polyline
   const trailLatLngs = TRAIL_COORDS.map(([lon,lat]) => [lat,lon]);
   L.polyline(trailLatLngs, {color:'#e07020', weight:2.5, opacity:0.7}).addTo(map);
+
+  // Start flag marker at Bridge of Gods
+  const startIcon = L.divIcon({className:'',
+    html:`<div style="font-size:18px;line-height:1;filter:drop-shadow(0 1px 2px rgba(0,0,0,0.4))">🚩</div>`,
+    iconSize:[20,20], iconAnchor:[2,18]});
+  L.marker([45.6600, -121.9044], {icon:startIcon, interactive:true})
+    .bindTooltip('Bridge of Gods — Start (Mi 2147.3)',
+      {className:'tip-tooltip', direction:'top', offset:[0,-18]})
+    .addTo(map);
 
   // Static background dot layer (all campsites for reference)
   const bgDotLayer = L.layerGroup().addTo(map);

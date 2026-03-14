@@ -12,8 +12,7 @@ The planner automatically generates an optimal multi-night itinerary based on yo
 
 ```
 pct_planner/
-├── index.html          ← Interactive trip planner
-├── editor.html         ← Campsite data editor
+├── index.html          ← Interactive trip planner (includes embedded campsite editor)
 ├── data/
 │   ├── campsites.json  ← 171 campsites + resupply stops (edit this to add sites)
 │   ├── trail.geojson   ← PCT Washington trail polyline (9,359 GPS points)
@@ -165,45 +164,27 @@ The **Export** tab in the sidebar offers two options:
 
 ## Adding and Editing Campsites
 
-### Using the Editor
+### Using the Editor Tab
 
-1. Run a local server and open **http://localhost:8000/editor.html**
-2. The editor shows all campsites on the map as colored dots (orange = Halfmile, green = custom, blue = resupply)
-3. Click **＋ New Campsite** and fill in the form, or click any dot to edit an existing site
-4. Use **📍 Pick on Map** to click the exact location rather than typing coordinates
-5. Click **Save** to confirm the edit in memory, then **⬇ Save JSON** to download the updated file
+Click the **Editor** tab in the sidebar. The planner switches into editing mode — the pace controls are hidden, the map cursor becomes a crosshair, and all campsites appear as colored dots:
 
-### Making Changes Permanent
+- **Orange dots** — Halfmile source data (167 sites)
+- **Green dots** — custom sites you have added
+- **Blue squares** — resupply stops
 
-The downloaded `campsites.json` needs to replace `data/campsites.json` in your repo. In GitHub Desktop:
+**Adding a new campsite** — click anywhere on or near the trail. The marker snaps to the nearest GPS point in the trail data, and a form opens pre-filled with that lat/lon and an estimated mile marker. Fill in the name, elevation, type, and amenities, then click **💾 Save**.
 
-1. Copy the downloaded file into your local `pct_planner/data/` folder, replacing the existing file
-2. GitHub Desktop will show it as modified
-3. Write a commit message (e.g. "Add camp at Lyman Lakes") and click **Commit to main**
+**Editing an existing campsite** — click any dot on the map, or find it in the scrollable list and click the row. The form opens with current values. Make your changes and click **💾 Save**. Both Halfmile and custom sites can be edited; resupply stops cannot be deleted.
+
+**Deleting a campsite** — select it and click **🗑 Delete**. You will be asked to confirm. The deletion is immediate in the current session.
+
+**Searching** — the search box filters the list by name or mile number.
+
+### ⚠ Making Changes Permanent
+
+Edits in the Editor tab are live for the current browser session only. To save them permanently:
+
+1. Click **⬇ Download campsites.json** in the Editor toolbar — do this before closing the browser or your edits will be lost
+2. Copy the downloaded file into your local `pct_planner/data/` folder, replacing the existing file
+3. In GitHub Desktop, write a commit message (e.g. "Add camp at Lyman Lakes") and click **Commit to main**
 4. Click **Push origin** — the live site updates within a minute
-
-### Campsite Fields Reference
-
-| Field | Type | Description |
-|-------|------|-------------|
-| mile | number | NOBO PCT mile marker |
-| name | string | Campsite name (no spaces preferred) |
-| lat | number | Latitude (decimal degrees) |
-| lon | number | Longitude (decimal degrees, negative W) |
-| elev | number | Elevation in feet |
-| type | string | `Undeveloped`, `Established`, or `Resupply` |
-| water | boolean | Water source nearby |
-| outhouse | boolean | Outhouse present |
-| source | string | `halfmile`, `resupply`, or `custom` |
-| desc | string | Notes / description |
-| amenities | array | e.g. `["Lodging","Store","Laundry"]` |
-
-### Data Sources
-
-- **Campsites:** [Halfmile PCT Maps](https://www.pctmap.net/) GPS waypoint data
-- **Trail:** PCT Washington GeoJSON derived from Halfmile source, simplified to 9,359 points
-- **Resupply info:** [PCTA Resupply Guide](https://www.pcta.org/discover-the-trail/resupply/)
-
----
-
-*Vibe coded with Claude by David Wettergreen*
