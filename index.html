@@ -498,7 +498,7 @@ function buildTrailCum(){
 }
 
 function trailDistFromLatLon(lat, lon){
-  if(!_trailCum) buildTrailCum();
+  if(!_trailCum || _trailCum.length < 2) buildTrailCum();
   let bestI=0, bd=Infinity;
   TRAIL_COORDS.forEach(([tlon,tlat],i)=>{
     const d=(tlat-lat)**2+(tlon-lon)**2;
