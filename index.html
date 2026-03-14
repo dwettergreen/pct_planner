@@ -495,6 +495,15 @@ function buildTrailCum(){
     const a=Math.sin(dφ/2)**2 + Math.cos(φ1)*Math.cos(φ2)*Math.sin(dλ/2)**2;
     _trailCum.push(_trailCum[i-1] + R*2*Math.asin(Math.sqrt(a)));
   }
+  // Rescale to match the 505.38mi reference used in campsites.json trailDist values.
+  // The rendering trail is simplified and measures shorter (~446mi); without rescaling,
+  // new camps would get trailDist values on a different scale than existing camps,
+  // breaking the monotonic sort required by the DP optimizer.
+  const rawTotal = _trailCum[_trailCum.length - 1];
+  if(rawTotal > 0){
+    const scale = END_TRAIL_DIST / rawTotal;
+    _trailCum = _trailCum.map(d => d * scale);
+  }
 }
 
 function trailDistFromLatLon(lat, lon){
@@ -526,7 +535,6 @@ function showSnap(latlng){
 function buildPlan(){
   const {avg} = getPace();
   const sd       = getStartDate();
-  console.log('[buildPlan] avg='+avg+' T='+Math.round((END_TRAIL_DIST-START_TRAIL_DIST)/avg)  +' N='+ALL_STOPS.length  +' d1='+((ALL_STOPS[0]||{}).trailDist)  +' dN='+((ALL_STOPS[ALL_STOPS.length-1]||{}).trailDist));
   const startDoy = Math.floor((sd - new Date(sd.getFullYear(), 0, 0)) / 86400000);
 
   const TOTAL = END_TRAIL_DIST - START_TRAIL_DIST;  // geometry-derived total miles
@@ -540,14 +548,17 @@ function buildPlan(){
     return (camp.mile - START_MILE) * SCALE;
   }
 
-  const N     = ALL_STOPS.length;
-  const dists = [START_TRAIL_DIST, ...ALL_STOPS.map(getTD), END_TRAIL_DIST];
+  // Sort a copy by trailDist so dists[] is strictly ascending.
+  // The DP inner loop uses "break when dist > max_d" which requires this.
+  const SORTED = [...ALL_STOPS].sort((a,b) => getTD(a) - getTD(b));
+  const N     = SORTED.length;
+  const dists = [START_TRAIL_DIST, ...SORTED.map(getTD), END_TRAIL_DIST];
   const M     = dists.length;
 
   // Score = elev × (1 + 2 × low-mosquito-bonus), date-aware
   function score(i) {
     if(i === 0 || i === M-1) return 0;
-    const camp = ALL_STOPS[i-1];
+    const camp = SORTED[i-1];
     const elev = camp.elev || 3500;
     const arrDoy = startDoy + dists[i] / avg;
     let mp = 0;
@@ -589,7 +600,7 @@ function buildPlan(){
     const max_d = TOTAL / (T * (1 - tol));
     const path = runDP(min_d, max_d);
     if(path){
-      return path.map(i => i === M-1 ? {...TERMINUS} : {...ALL_STOPS[i-1], isTerminus: false});
+      return path.map(i => i === M-1 ? {...TERMINUS} : {...SORTED[i-1], isTerminus: false});
     }
   }
   return null;
@@ -1108,6 +1119,11 @@ function enterEditorMode(){
 function exitEditorMode(){
   document.getElementById('edit-hint').style.display = 'none';
   map.getContainer().style.cursor = '';
+  // Remove any unsaved _new entries that were added during this editor session
+  const before = ALL_STOPS.length;
+  const newIdxs = ALL_STOPS.reduce((acc,c,i) => { if(c._new) acc.push(i); return acc; }, []);
+  for(let i = newIdxs.length-1; i >= 0; i--) ALL_STOPS.splice(newIdxs[i], 1);
+  if(ALL_STOPS.length !== before) rebuildEditorDots();
   editorSel = null;
   if(editorTempMark){ map.removeLayer(editorTempMark); editorTempMark=null; }
 }
