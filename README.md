@@ -70,11 +70,80 @@ Open `data/campsites.json` in any text editor. Each campsite is one object:
 
 In the planner, the **Export** tab offers:
 
-- **🔗 Generate Link** — encodes your settings (pace, dates, dragged campsites) into a URL you can bookmark or share
-- **⬇ Download CSV** — downloads a spreadsheet of all nights with dates, miles, elevation, and risk indicators
-- **📋 Copy to Clipboard** — plain text itinerary to paste anywhere
+- **⬇ Download CSV** — downloads a spreadsheet of all nights with PCT mile, miles today, campsite, elevation, date, and notes (type / water / mosquito risk / wind exposure)
+- **💾 Save plan.json** — downloads a `plan.json` file; place it in the `data/` folder and commit to restore your plan automatically on next load. Saves pace settings and any manually dragged campsites.
 
-To save a plan to `plan.json` so it loads automatically on the next visit, download the CSV/JSON from the Export tab and commit `data/plan.json` to your repo.
+## Campsite Selection Algorithm
+
+The planner uses **dynamic programming (DP)** to find the globally optimal sequence of campsites for the entire trip in one pass, rather than making greedy day-by-day decisions.
+
+### Step 1 — Set the target night count
+
+Given your average pace (say 13 mi/day) and the total distance (505.8 mi):
+
+```
+T = round(505.8 / 13) = 39 nights
+```
+
+### Step 2 — Define the daily distance window
+
+To allow flexibility around the average, it uses a tolerance that starts tight and widens if no valid path is found:
+
+```
+min_d = 505.8 / (39 × 1.25) = 10.4 mi
+max_d = 505.8 / (39 × 0.75) = 17.3 mi
+```
+
+If no complete path exists within those bounds (campsites are too sparse in a section), it retries with progressively wider tolerances: ±25%, ±35%, ±45%, ±55%, ±65%, ±80%. Your flex slider controls the display of the range but the DP uses these internal tolerances to guarantee it always finds a valid plan.
+
+### Step 3 — Score each campsite
+
+Every candidate campsite gets a score based on **elevation** and **mosquito pressure** on your estimated arrival date:
+
+```
+score = elev × (1 + 2.0 × (1 - mosquito_pressure))
+```
+
+Mosquito pressure is a value from 0.0 to 1.0, modeled as a bell curve (Gaussian) that peaks at a date determined by elevation band and your snowmelt date setting:
+
+| Band | Elevation | Peak date (baseline Jun 1 melt) |
+|------|-----------|----------------------------------|
+| Valley | < 3,000 ft | June 4 |
+| Montane | 3,000–4,500 ft | June 24 |
+| Subalpine | 4,500–5,500 ft | July 11 |
+| Alpine | > 5,500 ft | July 26 |
+
+A camp at 5,000 ft arrived at on July 11 gets peak mosquito pressure (1.0), collapsing the score multiplier to `1 + 2.0 × 0 = 1.0` — just raw elevation. The same camp arrived at in late August gets near-zero pressure, giving a multiplier up to `1 + 2.0 × 1.0 = 3.0` — tripling the effective score. In practice the algorithm strongly prefers high camps, but will trade elevation for a better mosquito window.
+
+### Step 4 — Dynamic programming
+
+The DP fills a table where `dp[i]` = the best cumulative score achievable by stopping at campsite `i`. For each campsite it looks back at all earlier campsites within the valid distance window:
+
+```
+for each campsite i:
+  for each earlier campsite j where min_d ≤ (mile[i] - mile[j]) ≤ max_d:
+    candidate = dp[j] + score(i)
+    if candidate > dp[i]: dp[i] = candidate, prev[i] = j
+```
+
+It then traces back from the terminus to reconstruct the winning sequence. This guarantees the **globally optimal** path — the highest total score across all nights — rather than locally good day-by-day choices.
+
+### How daily distances are calculated
+
+Daily distance is the difference between consecutive NOBO mile markers from the Halfmile data:
+
+```
+miles_today = camp[night_i].mile - camp[night_i-1].mile
+```
+
+The Halfmile mile marker is cumulative distance along the PCT trail centerline from the southern terminus, so differences do reflect trail distance (accounting for switchbacks and curves) rather than straight-line distance. However the algorithm treats all miles as equal effort — a 14-mile day over a 7,000 ft pass scores the same as a 14-mile flat valley day. For particularly strenuous segments (Glacier Peak, Harts Pass approach) you may want to manually drag those nights to shorter camps.
+
+### What the algorithm does not consider
+
+- **Water** — all campsites in the dataset have water noted, but dry camps are not penalized
+- **Terrain difficulty** — elevation gain/loss beyond what raw elevation implies
+- **Camp crowding** — popular sites are not penalized
+- **Manual overrides** — once you drag a marker to a different camp, that night is locked and the DP result is overridden for that night only
 
 ## Campsite Fields Reference
 
