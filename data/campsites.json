@@ -121,6 +121,18 @@
     "trailDist": 38.644
   },
   {
+    "name": "Tentsite",
+    "mile": 2191.59,
+    "lat": 45.842582,
+    "lon": -121.796607,
+    "elev": null,
+    "type": "Undeveloped",
+    "water": false,
+    "outhouse": false,
+    "source": "custom",
+    "trailDist": 44.045
+  },
+  {
     "mile": 2191.98,
     "name": "CS2191",
     "lat": 45.850593,
