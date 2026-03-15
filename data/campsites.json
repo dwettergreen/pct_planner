@@ -289,6 +289,18 @@
     "trailDist": 93.349
   },
   {
+    "name": "KillenCreek",
+    "mile": 2247.16,
+    "lat": 46.255248,
+    "lon": -121.521537,
+    "elev": 5924,
+    "type": "Undeveloped",
+    "water": true,
+    "outhouse": false,
+    "source": "custom",
+    "trailDist": 99.66
+  },
+  {
     "mile": 2249.586,
     "name": "MuddyForkTrib2",
     "lat": 46.304203,
@@ -395,6 +407,18 @@
     "outhouse": false,
     "source": "halfmile",
     "trailDist": 121.733
+  },
+  {
+    "name": "SheepLake",
+    "mile": 2273.45,
+    "lat": 46.452852,
+    "lon": -121.431021,
+    "elev": 5767,
+    "type": "Undeveloped",
+    "water": true,
+    "outhouse": false,
+    "source": "custom",
+    "trailDist": 125.961
   },
   {
     "mile": 2274.051,
@@ -870,6 +894,18 @@
     "outhouse": false,
     "source": "halfmile",
     "trailDist": 240.668
+  },
+  {
+    "name": "TwilightLake",
+    "mile": 2390.22,
+    "lat": 47.332123,
+    "lon": -121.43461,
+    "elev": 3586,
+    "type": "Undeveloped",
+    "water": true,
+    "outhouse": false,
+    "source": "custom",
+    "trailDist": 242.88
   },
   {
     "mile": 2393.6,

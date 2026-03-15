@@ -1,94 +1,213 @@
 {
-  "version": 1,
-  "saved": "2026-03-15T00:41:11.869Z",
+  "version": 2,
+  "saved": "2026-03-15T03:16:41.454Z",
   "settings": {
     "startDate": "2026-07-01",
     "meltDate": "2026-06-01",
     "avgPace": "12",
-    "flexPace": "3"
+    "flexPace": "4"
   },
-  "overrides": [
+  "nights": [
     {
-      "i": 0,
-      "name": "CS2157",
-      "mile": 2157.127
+      "name": "CS2162",
+      "mile": 2162.257,
+      "trailDist": 14.688
     },
     {
-      "i": 1,
-      "name": "RockCreekBridge",
-      "mile": 2169.3
-    },
-    {
-      "i": 2,
       "name": "TroutCreek",
-      "mile": 2177.115
+      "mile": 2177.115,
+      "trailDist": 29.543
     },
     {
-      "i": 3,
       "name": "CS2191",
-      "mile": 2191.98
+      "mile": 2191.98,
+      "trailDist": 44.44
     },
     {
-      "i": 4,
       "name": "BlueLakeCS",
-      "mile": 2205.645
+      "mile": 2205.645,
+      "trailDist": 58.101
     },
     {
-      "i": 5,
       "name": "CS2219",
-      "mile": 2219.217
+      "mile": 2219.217,
+      "trailDist": 71.685
     },
     {
-      "i": 6,
       "name": "CS2235",
-      "mile": 2235.033
+      "mile": 2235.033,
+      "trailDist": 87.52
     },
     {
-      "i": 7,
-      "name": "LavaSpring",
-      "mile": 2249.953
+      "name": "KillenCreek",
+      "mile": 2247.16,
+      "trailDist": 99.66
     },
     {
-      "i": 20,
-      "name": "Snoqualmie Pass (I-90)",
-      "mile": 2393.6
+      "name": "CS2259",
+      "mile": 2259.269,
+      "trailDist": 111.786
     },
     {
-      "i": 21,
-      "name": "CS2407",
-      "mile": 2407.841
+      "name": "WaluptCreek",
+      "mile": 2269.224,
+      "trailDist": 121.733
     },
     {
-      "i": 22,
-      "name": "CS2429",
-      "mile": 2429.119
+      "name": "CS2280",
+      "mile": 2280.357,
+      "trailDist": 132.868
     },
     {
-      "i": 26,
-      "name": "Stevens Pass (Hwy 2)",
-      "mile": 2464.62
+      "name": "CS2290",
+      "mile": 2290.14,
+      "trailDist": 142.663
     },
     {
-      "i": 35,
-      "name": "BridgeCreekCamp",
-      "mile": 2577.32
+      "name": "BueschLake",
+      "mile": 2301.359,
+      "trailDist": 153.894
     },
     {
-      "i": 36,
-      "name": "SixMileCamp",
-      "mile": 2583.608
+      "name": "TwoLakesTR",
+      "mile": 2315.055,
+      "trailDist": 167.59
     },
     {
-      "i": 37,
-      "name": "CS2595",
-      "mile": 2595.44
+      "name": "SheepLake4",
+      "mile": 2326.169,
+      "trailDist": 178.684
     },
     {
-      "i": 38,
-      "name": "CS2609",
-      "mile": 2609.918
+      "name": "MartinsonGap",
+      "mile": 2337.479,
+      "trailDist": 190.021
+    },
+    {
+      "name": "RD2349",
+      "mile": 2349.143,
+      "trailDist": 201.691
+    },
+    {
+      "name": "CS2359",
+      "mile": 2359.915,
+      "trailDist": 212.474
+    },
+    {
+      "name": "CS2373",
+      "mile": 2373.368,
+      "trailDist": 225.912
+    },
+    {
+      "name": "MirrorLake2",
+      "mile": 2385.059,
+      "trailDist": 237.573
+    },
+    {
+      "name": "CS2397",
+      "mile": 2397.254,
+      "trailDist": 249.79
+    },
+    {
+      "name": "DelateCreek",
+      "mile": 2411.683,
+      "trailDist": 264.214
+    },
+    {
+      "name": "CS2425",
+      "mile": 2425.256,
+      "trailDist": 277.745
+    },
+    {
+      "name": "DeepLakeOutlet",
+      "mile": 2435.321,
+      "trailDist": 287.768
+    },
+    {
+      "name": "CS2445",
+      "mile": 2445.205,
+      "trailDist": 297.613
+    },
+    {
+      "name": "MigLake",
+      "mile": 2457.229,
+      "trailDist": 309.631
+    },
+    {
+      "name": "CS2468",
+      "mile": 2468.664,
+      "trailDist": 321.076
+    },
+    {
+      "name": "CS2481",
+      "mile": 2481.723,
+      "trailDist": 334.124
+    },
+    {
+      "name": "LakeSallyAnn",
+      "mile": 2494.022,
+      "trailDist": 346.422
+    },
+    {
+      "name": "WhiteChuckRiverTrib",
+      "mile": 2506.025,
+      "trailDist": 358.413
+    },
+    {
+      "name": "MicaLake",
+      "mile": 2521.256,
+      "trailDist": 373.645
+    },
+    {
+      "name": "CS2531",
+      "mile": 2531.984,
+      "trailDist": 384.334
+    },
+    {
+      "name": "CS2543",
+      "mile": 2543.288,
+      "trailDist": 395.634
+    },
+    {
+      "name": "CS2554",
+      "mile": 2554.394,
+      "trailDist": 406.703
+    },
+    {
+      "name": "CS2568",
+      "mile": 2568.24,
+      "trailDist": 420.588
+    },
+    {
+      "name": "HideAWayCamp",
+      "mile": 2585.813,
+      "trailDist": 438.176
+    },
+    {
+      "name": "Hwy 20 / Mazama",
+      "mile": 2591.63,
+      "trailDist": 443.994
+    },
+    {
+      "name": "MethowPass",
+      "mile": 2602.3,
+      "trailDist": 454.683
+    },
+    {
+      "name": "CS2612",
+      "mile": 2612.627,
+      "trailDist": 465.003
+    },
+    {
+      "name": "CS2626",
+      "mile": 2626.076,
+      "trailDist": 478.436
+    },
+    {
+      "name": "CS2642",
+      "mile": 2642.056,
+      "trailDist": 494.372
     }
   ],
-  "nights": 41,
-  "totalMiles": "505.8"
+  "totalMiles": "505.4"
 }
