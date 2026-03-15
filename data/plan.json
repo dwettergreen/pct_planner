@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "saved": "2026-03-15T00:30:53.614Z",
+  "saved": "2026-03-15T00:41:11.869Z",
   "settings": {
     "startDate": "2026-07-01",
     "meltDate": "2026-06-01",
@@ -25,8 +25,8 @@
     },
     {
       "i": 3,
-      "name": "Tentsite",
-      "mile": 2191.59
+      "name": "CS2191",
+      "mile": 2191.98
     },
     {
       "i": 4,
@@ -35,23 +35,18 @@
     },
     {
       "i": 5,
-      "name": "SteamboatLakeCreek",
-      "mile": 2221.836
+      "name": "CS2219",
+      "mile": 2219.217
     },
     {
       "i": 6,
-      "name": "SwampyCreek",
-      "mile": 2230.388
+      "name": "CS2235",
+      "mile": 2235.033
     },
     {
       "i": 7,
-      "name": "CS2240",
-      "mile": 2240.859
-    },
-    {
-      "i": 8,
-      "name": "CS2254",
-      "mile": 2254.204
+      "name": "LavaSpring",
+      "mile": 2249.953
     },
     {
       "i": 20,
@@ -72,6 +67,26 @@
       "i": 26,
       "name": "Stevens Pass (Hwy 2)",
       "mile": 2464.62
+    },
+    {
+      "i": 35,
+      "name": "BridgeCreekCamp",
+      "mile": 2577.32
+    },
+    {
+      "i": 36,
+      "name": "SixMileCamp",
+      "mile": 2583.608
+    },
+    {
+      "i": 37,
+      "name": "CS2595",
+      "mile": 2595.44
+    },
+    {
+      "i": 38,
+      "name": "CS2609",
+      "mile": 2609.918
     }
   ],
   "nights": 41,
