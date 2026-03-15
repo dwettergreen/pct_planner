@@ -1110,6 +1110,9 @@ function saveAsJSON(){
   // This is more reliable than diffing against a fresh build, since the fresh
   // build may differ due to rounding, new camps, or changed campsites.json.
   const SCALE = (END_TRAIL_DIST - START_TRAIL_DIST) / (END_MILE - START_MILE);
+  console.log('[saveAsJSON] plan length:', plan.length, 'first camp:', plan[0] && plan[0].name, 'last non-terminus:', plan.filter(c=>!c.isTerminus).slice(-1)[0] && plan.filter(c=>!c.isTerminus).slice(-1)[0].name);
+  // Log first 3 dragged camps to verify
+  plan.filter(c=>!c.isTerminus).slice(0,5).forEach((c,i) => console.log('[saveAsJSON] night', i+1, c.name, 'trailDist:', c.trailDist));
   const nights = plan
     .filter(c => !c.isTerminus)
     .map(c => ({
